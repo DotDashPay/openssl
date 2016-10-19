@@ -64,7 +64,7 @@ my $usage="Usage: Configure [no-<cipher> ...] [enable-<cipher> ...] [experimenta
 #		disabled.
 # no-sse2	disables IA-32 SSE2 code, above option implies no-sse2
 # no-<cipher>   build without specified algorithm (rsa, idea, rc5, ...)
-# -<xxx> +<xxx> compiler options are passed through 
+# -<xxx> +<xxx> compiler options are passed through
 #
 # DEBUG_SAFESTACK use type-safe stacks to enforce type-safety on stack items
 #		provided to stack calls. Generates unique stack functions for
@@ -105,7 +105,7 @@ my $usage="Usage: Configure [no-<cipher> ...] [enable-<cipher> ...] [experimenta
 # AES_ASM	ASE_[en|de]crypt is implemented in assembler
 
 # Minimum warning options... any contributions to OpenSSL should at least get
-# past these. 
+# past these.
 
 my $gcc_devteam_warn = "-Wall -pedantic -DPEDANTIC -Wno-long-long -Wsign-compare -Wmissing-prototypes -Wshadow -Wformat -Werror -DCRYPTO_MDEBUG_ALL -DCRYPTO_MDEBUG_ABORT -DREF_CHECK -DOPENSSL_NO_DEPRECATED";
 
@@ -171,7 +171,7 @@ my $ppc32_asm=$ppc64_asm;
 my $no_asm="::::::::::::::::void";
 
 # As for $BSDthreads. Idea is to maintain "collective" set of flags,
-# which would cover all BSD flavors. -pthread applies to them all, 
+# which would cover all BSD flavors. -pthread applies to them all,
 # but is treated differently. OpenBSD expands is as -D_POSIX_THREAD
 # -lc_r, which is sufficient. FreeBSD 4.x expands it as -lc_r,
 # which has to be accompanied by explicit -D_THREAD_SAFE and
@@ -250,7 +250,7 @@ my %table=(
 # compiler:-)
 #						<appro@fy.chalmers.se>
 "solaris64-x86_64-gcc","gcc:-m64 -O3 -Wall -DL_ENDIAN::-D_REENTRANT::-lsocket -lnsl -ldl:SIXTY_FOUR_BIT_LONG RC4_CHUNK DES_INT DES_UNROLL:${x86_64_asm}:elf:dlfcn:solaris-shared:-fPIC:-m64 -shared -static-libgcc:.so.\$(SHLIB_MAJOR).\$(SHLIB_MINOR):::/64",
- 
+
 #### Solaris x86 with Sun C setups
 "solaris-x86-cc","cc:-fast -xarch=generic -O -Xa::-D_REENTRANT::-lsocket -lnsl -ldl:BN_LLONG RC4_CHAR RC4_CHUNK DES_PTR DES_UNROLL BF_PTR:${no_asm}:dlfcn:solaris-shared:-KPIC:-G -dy -z text:.so.\$(SHLIB_MAJOR).\$(SHLIB_MINOR)",
 "solaris64-x86_64-cc","cc:-fast -xarch=amd64 -xstrconst -Xa -DL_ENDIAN::-D_REENTRANT::-lsocket -lnsl -ldl:SIXTY_FOUR_BIT_LONG RC4_CHUNK DES_INT DES_UNROLL:${x86_64_asm}:elf:dlfcn:solaris-shared:-KPIC:-xarch=amd64 -G -dy -z text:.so.\$(SHLIB_MAJOR).\$(SHLIB_MINOR):::/64",
@@ -275,7 +275,7 @@ my %table=(
 "solaris64-sparcv9-cc","cc:-xtarget=ultra -xarch=v9 -xO5 -xstrconst -xdepend -Xa -DB_ENDIAN::-D_REENTRANT:ULTRASPARC:-lsocket -lnsl -ldl:BN_LLONG RC4_CHAR RC4_CHUNK DES_INT DES_PTR DES_RISC1 DES_UNROLL BF_PTR:${sparcv9_asm}:dlfcn:solaris-shared:-KPIC:-xarch=v9 -G -dy -z text:.so.\$(SHLIB_MAJOR).\$(SHLIB_MINOR):::/64",
 ####
 "debug-solaris-sparcv8-cc","cc:-DBN_DEBUG -DREF_CHECK -DCONF_DEBUG -DBN_CTX_DEBUG -DCRYPTO_MDEBUG_ALL -xarch=v8 -g -O -xstrconst -Xa -DB_ENDIAN -DBN_DIV2W::-D_REENTRANT::-lsocket -lnsl -ldl:BN_LLONG RC4_CHAR RC4_CHUNK DES_PTR DES_RISC1 DES_UNROLL BF_PTR:${sparcv8_asm}:dlfcn:solaris-shared:-KPIC:-G -dy -z text:.so.\$(SHLIB_MAJOR).\$(SHLIB_MINOR)",
-"debug-solaris-sparcv9-cc","cc:-DBN_DEBUG -DREF_CHECK -DCONF_DEBUG -DBN_CTX_DEBUG -DCRYPTO_MDEBUG_ALL -xtarget=ultra -xarch=v8plus -g -O -xstrconst -Xa -DB_ENDIAN -DBN_DIV2W::-D_REENTRANT:ULTRASPARC:-lsocket -lnsl -ldl:BN_LLONG RC4_CHAR RC4_CHUNK_LL DES_PTR DES_RISC1 DES_UNROLL BF_PTR:${sparcv9_asm}:dlfcn:solaris-shared:-KPIC:-G -dy -z text:.so.\$(SHLIB_MAJOR).\$(SHLIB_MINOR)", 
+"debug-solaris-sparcv9-cc","cc:-DBN_DEBUG -DREF_CHECK -DCONF_DEBUG -DBN_CTX_DEBUG -DCRYPTO_MDEBUG_ALL -xtarget=ultra -xarch=v8plus -g -O -xstrconst -Xa -DB_ENDIAN -DBN_DIV2W::-D_REENTRANT:ULTRASPARC:-lsocket -lnsl -ldl:BN_LLONG RC4_CHAR RC4_CHUNK_LL DES_PTR DES_RISC1 DES_UNROLL BF_PTR:${sparcv9_asm}:dlfcn:solaris-shared:-KPIC:-G -dy -z text:.so.\$(SHLIB_MAJOR).\$(SHLIB_MINOR)",
 
 #### SunOS configs, assuming sparc for the gcc one.
 #"sunos-cc", "cc:-O4 -DNOPROTO -DNOCONST::(unknown):SUNOS::DES_UNROLL:${no_asm}::",
@@ -345,7 +345,7 @@ my %table=(
 "hpux64-ia64-cc","cc:-Ae +DD64 +O3 +Olit=all -z -DB_ENDIAN -D_REENTRANT::::-ldl:SIXTY_FOUR_BIT_LONG MD2_CHAR RC4_INDEX DES_UNROLL DES_RISC1 DES_INT:${ia64_asm}:dlfcn:hpux-shared:+Z:+DD64 -b:.so.\$(SHLIB_MAJOR).\$(SHLIB_MINOR):::/hpux64",
 # GCC builds...
 "hpux-ia64-gcc","gcc:-O3 -DB_ENDIAN -D_REENTRANT::::-ldl:SIXTY_FOUR_BIT MD2_CHAR RC4_INDEX DES_UNROLL DES_RISC1 DES_INT:${ia64_asm}:dlfcn:hpux-shared:-fpic:-shared:.so.\$(SHLIB_MAJOR).\$(SHLIB_MINOR):::/hpux32",
-"hpux64-ia64-gcc","gcc:-mlp64 -O3 -DB_ENDIAN -D_REENTRANT::::-ldl:SIXTY_FOUR_BIT_LONG MD2_CHAR RC4_INDEX DES_UNROLL DES_RISC1 DES_INT:${ia64_asm}:dlfcn:hpux-shared:-fpic:-mlp64 -shared:.so.\$(SHLIB_MAJOR).\$(SHLIB_MINOR):::/hpux64", 
+"hpux64-ia64-gcc","gcc:-mlp64 -O3 -DB_ENDIAN -D_REENTRANT::::-ldl:SIXTY_FOUR_BIT_LONG MD2_CHAR RC4_INDEX DES_UNROLL DES_RISC1 DES_INT:${ia64_asm}:dlfcn:hpux-shared:-fpic:-mlp64 -shared:.so.\$(SHLIB_MAJOR).\$(SHLIB_MINOR):::/hpux64",
 
 # Legacy HPUX 9.X configs...
 "hpux-cc",	"cc:-DB_ENDIAN -DBN_DIV2W -DMD32_XARRAY -Ae +ESlit +O2 -z::(unknown)::-Wl,+s -ldld:DES_PTR DES_UNROLL DES_RISC1:${no_asm}:dl:hpux-shared:+Z:-b:.sl.\$(SHLIB_MAJOR).\$(SHLIB_MINOR)",
@@ -357,7 +357,7 @@ my %table=(
 # DEC Alpha OSF/1/Tru64 targets.
 #
 #	"What's in a name? That which we call a rose
-#	 By any other word would smell as sweet."
+#        By any other word would smell as sweet."
 #
 # - William Shakespeare, "Romeo & Juliet", Act II, scene II.
 #
@@ -473,6 +473,8 @@ my %table=(
 "android-x86","gcc:-mandroid -I\$(ANDROID_DEV)/include -B\$(ANDROID_DEV)/lib -O3 -fomit-frame-pointer -Wall::-D_REENTRANT::-ldl:BN_LLONG ${x86_gcc_des} ${x86_gcc_opts}:".eval{my $asm=${x86_elf_asm};$asm=~s/:elf/:android/;$asm}.":dlfcn:linux-shared:-fPIC::.so.\$(SHLIB_MAJOR).\$(SHLIB_MINOR)",
 "android-armv7","gcc:-march=armv7-a -mandroid -I\$(ANDROID_DEV)/include -B\$(ANDROID_DEV)/lib -O3 -fomit-frame-pointer -Wall::-D_REENTRANT::-ldl:BN_LLONG RC4_CHAR RC4_CHUNK DES_INT DES_UNROLL BF_PTR:${armv4_asm}:dlfcn:linux-shared:-fPIC::.so.\$(SHLIB_MAJOR).\$(SHLIB_MINOR)",
 "android-mips","gcc:-mandroid -I\$(ANDROID_DEV)/include -B\$(ANDROID_DEV)/lib -O3 -Wall::-D_REENTRANT::-ldl:BN_LLONG RC4_CHAR RC4_CHUNK DES_INT DES_UNROLL BF_PTR:${mips32_asm}:o32:dlfcn:linux-shared:-fPIC::.so.\$(SHLIB_MAJOR).\$(SHLIB_MINOR)",
+
+"armv7","arm-linux-gnueabihf-gcc:-march=armv7-a -I/usr/arm-linux-gnueabihf/include -L/usr/arm-linux-gnueabihf/lib -O3 -fomit-frame-pointer -Wall -fPIC::-D_REENTRANT::-ldl:BN_LLONG RC4_CHAR RC4_CHUNK DES_INT DES_UNROLL BF_PTR:${armv4_asm}:dlfcn:linux-shared:-fPIC:-shared:.so.\$(SHLIB_MAJOR).\$(SHLIB_MINOR)",
 
 #### *BSD [do see comment about ${BSDthreads} above!]
 "BSD-generic32","gcc:-O3 -fomit-frame-pointer -Wall::${BSDthreads}:::BN_LLONG RC2_CHAR RC4_INDEX DES_INT DES_UNROLL:${no_asm}:dlfcn:bsd-gcc-shared:-fPIC::.so.\$(SHLIB_MAJOR).\$(SHLIB_MINOR)",
@@ -609,7 +611,7 @@ my %table=(
 # with itself, Applink is never engaged and can as well be omitted.
 "mingw64", "gcc:-mno-cygwin -DL_ENDIAN -O3 -Wall -DWIN32_LEAN_AND_MEAN -DUNICODE -D_UNICODE::-D_MT:MINGW64:-lws2_32 -lgdi32 -lcrypt32:SIXTY_FOUR_BIT RC4_CHUNK_LL DES_INT EXPORT_VAR_AS_FN:${x86_64_asm}:mingw64:win32:cygwin-shared:-D_WINDLL:-mno-cygwin:.dll.a",
 
-# UWIN 
+# UWIN
 "UWIN", "cc:-DTERMIOS -DL_ENDIAN -O -Wall:::UWIN::BN_LLONG ${x86_gcc_des} ${x86_gcc_opts}:${no_asm}:win32",
 
 # Cygwin
@@ -684,11 +686,11 @@ my %table=(
 );
 
 my @MK1MF_Builds=qw(VC-WIN64I VC-WIN64A
-		    debug-VC-WIN64I debug-VC-WIN64A
-		    VC-NT VC-CE VC-WIN32 debug-VC-WIN32
-		    BC-32 
-		    netware-clib netware-clib-bsdsock
-		    netware-libc netware-libc-bsdsock);
+                    debug-VC-WIN64I debug-VC-WIN64A
+                    VC-NT VC-CE VC-WIN32 debug-VC-WIN32
+                    BC-32
+                    netware-clib netware-clib-bsdsock
+                    netware-libc netware-libc-bsdsock);
 
 my $idx = 0;
 my $idx_cc = $idx++;
@@ -770,31 +772,31 @@ my $perl;
 my $fips=0;
 
 if (exists $ENV{FIPSDIR})
-	{
-	$fipsdir = $ENV{FIPSDIR};
-	$fipsdir =~ s/\/$//;
-	}
+        {
+        $fipsdir = $ENV{FIPSDIR};
+        $fipsdir =~ s/\/$//;
+        }
 
 # All of the following is disabled by default (RC5 was enabled before 0.9.8):
 
 my %disabled = ( # "what"         => "comment" [or special keyword "experimental"]
-		 "ec_nistp_64_gcc_128" => "default",
-		 "gmp"		  => "default",
-		 "jpake"          => "experimental",
-		 "libunbound"     => "experimental",
-		 "md2"            => "default",
-		 "rc5"            => "default",
-		 "rfc3779"	  => "default",
-		 "sctp"           => "default",
-		 "shared"         => "default",
-		 "ssl-trace"	  => "default",
-		 "ssl2"           => "default",
-		 "store"	  => "experimental",
-		 "unit-test"	  => "default",
-		 "weak-ssl-ciphers" => "default",
-		 "zlib"           => "default",
-		 "zlib-dynamic"   => "default"
-	       );
+                 "ec_nistp_64_gcc_128" => "default",
+                 "gmp"            => "default",
+                 "jpake"          => "experimental",
+                 "libunbound"     => "experimental",
+                 "md2"            => "default",
+                 "rc5"            => "default",
+                 "rfc3779"        => "default",
+                 "sctp"           => "default",
+                 "shared"         => "default",
+                 "ssl-trace"      => "default",
+                 "ssl2"           => "default",
+                 "store"          => "experimental",
+                 "unit-test"      => "default",
+                 "weak-ssl-ciphers" => "default",
+                 "zlib"           => "default",
+                 "zlib-dynamic"   => "default"
+               );
 my @experimental = ();
 
 # This is what $depflags will look like with the above defaults
@@ -834,289 +836,289 @@ my $argvstring="";
 my $argv_unprocessed=1;
 
 while($argv_unprocessed)
-	{
-	$flags="";
-	$depflags="";
-	$openssl_experimental_defines="";
-	$openssl_algorithm_defines="";
-	$openssl_thread_defines="";
-	$openssl_sys_defines="";
-	$openssl_other_defines="";
-	$libs="";
-	$target="";
-	$options="";
-	$symlink=1;
+        {
+        $flags="";
+        $depflags="";
+        $openssl_experimental_defines="";
+        $openssl_algorithm_defines="";
+        $openssl_thread_defines="";
+        $openssl_sys_defines="";
+        $openssl_other_defines="";
+        $libs="";
+        $target="";
+        $options="";
+        $symlink=1;
 
-	$argv_unprocessed=0;
-	$argvstring=join(' ',@argvcopy);
+        $argv_unprocessed=0;
+        $argvstring=join(' ',@argvcopy);
 
 PROCESS_ARGS:
-	foreach (@argvcopy)
-		{
-		s /^-no-/no-/; # some people just can't read the instructions
+        foreach (@argvcopy)
+                {
+                s /^-no-/no-/; # some people just can't read the instructions
 
-		# rewrite some options in "enable-..." form
-		s /^-?-?shared$/enable-shared/;
-		s /^sctp$/enable-sctp/;
-		s /^threads$/enable-threads/;
-		s /^zlib$/enable-zlib/;
-		s /^zlib-dynamic$/enable-zlib-dynamic/;
+                # rewrite some options in "enable-..." form
+                s /^-?-?shared$/enable-shared/;
+                s /^sctp$/enable-sctp/;
+                s /^threads$/enable-threads/;
+                s /^zlib$/enable-zlib/;
+                s /^zlib-dynamic$/enable-zlib-dynamic/;
 
-		if (/^no-(.+)$/ || /^disable-(.+)$/)
-			{
-			if (!($disabled{$1} eq "experimental"))
-				{
-				if ($1 eq "ssl")
-					{
-					$disabled{"ssl2"} = "option(ssl)";
-					$disabled{"ssl3"} = "option(ssl)";
-					}
-				elsif ($1 eq "tls")
-					{
-					$disabled{"tls1"} = "option(tls)"
-					}
-				elsif ($1 eq "ssl3-method")
-					{
-					$disabled{"ssl3-method"} = "option(ssl)";
-					$disabled{"ssl3"} = "option(ssl)";
-					}
-				else
-					{
-					$disabled{$1} = "option";
-					}
-				}			
-			}
-		elsif (/^enable-(.+)$/ || /^experimental-(.+)$/)
-			{
-			my $algo = $1;
-			if ($disabled{$algo} eq "experimental")
-				{
-				die "You are requesting an experimental feature; please say 'experimental-$algo' if you are sure\n"
-					unless (/^experimental-/);
-				push @experimental, $algo;
-				}
-			delete $disabled{$algo};
+                if (/^no-(.+)$/ || /^disable-(.+)$/)
+                        {
+                        if (!($disabled{$1} eq "experimental"))
+                                {
+                                if ($1 eq "ssl")
+                                        {
+                                        $disabled{"ssl2"} = "option(ssl)";
+                                        $disabled{"ssl3"} = "option(ssl)";
+                                        }
+                                elsif ($1 eq "tls")
+                                        {
+                                        $disabled{"tls1"} = "option(tls)"
+                                        }
+                                elsif ($1 eq "ssl3-method")
+                                        {
+                                        $disabled{"ssl3-method"} = "option(ssl)";
+                                        $disabled{"ssl3"} = "option(ssl)";
+                                        }
+                                else
+                                        {
+                                        $disabled{$1} = "option";
+                                        }
+                                }
+                        }
+                elsif (/^enable-(.+)$/ || /^experimental-(.+)$/)
+                        {
+                        my $algo = $1;
+                        if ($disabled{$algo} eq "experimental")
+                                {
+                                die "You are requesting an experimental feature; please say 'experimental-$algo' if you are sure\n"
+                                        unless (/^experimental-/);
+                                push @experimental, $algo;
+                                }
+                        delete $disabled{$algo};
 
-			$threads = 1 if ($algo eq "threads");
-			}
-		elsif (/^--test-sanity$/)
-			{
-			exit(&test_sanity());
-			}
-		elsif (/^--strict-warnings/)
-			{
-			$strict_warnings = 1;
-			}
-		elsif (/^reconfigure/ || /^reconf/)
-			{
-			if (open(IN,"<$Makefile"))
-				{
-				while (<IN>)
-					{
-					chomp;
-					if (/^CONFIGURE_ARGS=(.*)/)
-						{
-						$argvstring=$1;
-						@argvcopy=split(' ',$argvstring);
-						die "Incorrect data to reconfigure, please do a normal configuration\n"
-							if (grep(/^reconf/,@argvcopy));
-						print "Reconfiguring with: $argvstring\n";
-						$argv_unprocessed=1;
-						close(IN);
-						last PROCESS_ARGS;
-						}
-					}
-				close(IN);
-				}
-			die "Insufficient data to reconfigure, please do a normal configuration\n";
-			}
-		elsif (/^386$/)
-			{ $processor=386; }
-		elsif (/^fips$/)
-			{
-			$fips=1;
-			}
-		elsif (/^rsaref$/)
-			{
-			# No RSAref support any more since it's not needed.
-			# The check for the option is there so scripts aren't
-			# broken
-			}
-		elsif (/^[-+]/)
-			{
-			if (/^--prefix=(.*)$/)
-				{
-				$prefix=$1;
-				}
-			elsif (/^--libdir=(.*)$/)
-				{
-				$libdir=$1;
-				}
-			elsif (/^--openssldir=(.*)$/)
-				{
-				$openssldir=$1;
-				}
-			elsif (/^--install.prefix=(.*)$/)
-				{
-				$install_prefix=$1;
-				}
-			elsif (/^--with-krb5-(dir|lib|include|flavor)=(.*)$/)
-				{
-				$withargs{"krb5-".$1}=$2;
-				}
-			elsif (/^--with-zlib-lib=(.*)$/)
-				{
-				$withargs{"zlib-lib"}=$1;
-				}
-			elsif (/^--with-zlib-include=(.*)$/)
-				{
-				$withargs{"zlib-include"}="-I$1";
-				}
-			elsif (/^--with-fipsdir=(.*)$/)
-				{
-				$fipsdir="$1";
-				}
-			elsif (/^--with-fipslibdir=(.*)$/)
-				{
-				$fipslibdir="$1";
-				}
-			elsif (/^--with-baseaddr=(.*)$/)
-				{
-				$baseaddr="$1";
-				}
-			elsif (/^--cross-compile-prefix=(.*)$/)
-				{
-				$cross_compile_prefix=$1;
-				}
-			elsif (/^-[lL](.*)$/ or /^-Wl,/)
-				{
-				$libs.=$_." ";
-				}
-			else	# common if (/^[-+]/), just pass down...
-				{
-				$_ =~ s/%([0-9a-f]{1,2})/chr(hex($1))/gei;
-				$flags.=$_." ";
-				}
-			}
-		elsif ($_ =~ /^([^:]+):(.+)$/)
-			{
-			eval "\$table{\$1} = \"$2\""; # allow $xxx constructs in the string
-			$target=$1;
-			}
-		else
-			{
-			die "target already defined - $target (offending arg: $_)\n" if ($target ne "");
-			$target=$_;
-			}
+                        $threads = 1 if ($algo eq "threads");
+                        }
+                elsif (/^--test-sanity$/)
+                        {
+                        exit(&test_sanity());
+                        }
+                elsif (/^--strict-warnings/)
+                        {
+                        $strict_warnings = 1;
+                        }
+                elsif (/^reconfigure/ || /^reconf/)
+                        {
+                        if (open(IN,"<$Makefile"))
+                                {
+                                while (<IN>)
+                                        {
+                                        chomp;
+                                        if (/^CONFIGURE_ARGS=(.*)/)
+                                                {
+                                                $argvstring=$1;
+                                                @argvcopy=split(' ',$argvstring);
+                                                die "Incorrect data to reconfigure, please do a normal configuration\n"
+                                                        if (grep(/^reconf/,@argvcopy));
+                                                print "Reconfiguring with: $argvstring\n";
+                                                $argv_unprocessed=1;
+                                                close(IN);
+                                                last PROCESS_ARGS;
+                                                }
+                                        }
+                                close(IN);
+                                }
+                        die "Insufficient data to reconfigure, please do a normal configuration\n";
+                        }
+                elsif (/^386$/)
+                        { $processor=386; }
+                elsif (/^fips$/)
+                        {
+                        $fips=1;
+                        }
+                elsif (/^rsaref$/)
+                        {
+                        # No RSAref support any more since it's not needed.
+                        # The check for the option is there so scripts aren't
+                        # broken
+                        }
+                elsif (/^[-+]/)
+                        {
+                        if (/^--prefix=(.*)$/)
+                                {
+                                $prefix=$1;
+                                }
+                        elsif (/^--libdir=(.*)$/)
+                                {
+                                $libdir=$1;
+                                }
+                        elsif (/^--openssldir=(.*)$/)
+                                {
+                                $openssldir=$1;
+                                }
+                        elsif (/^--install.prefix=(.*)$/)
+                                {
+                                $install_prefix=$1;
+                                }
+                        elsif (/^--with-krb5-(dir|lib|include|flavor)=(.*)$/)
+                                {
+                                $withargs{"krb5-".$1}=$2;
+                                }
+                        elsif (/^--with-zlib-lib=(.*)$/)
+                                {
+                                $withargs{"zlib-lib"}=$1;
+                                }
+                        elsif (/^--with-zlib-include=(.*)$/)
+                                {
+                                $withargs{"zlib-include"}="-I$1";
+                                }
+                        elsif (/^--with-fipsdir=(.*)$/)
+                                {
+                                $fipsdir="$1";
+                                }
+                        elsif (/^--with-fipslibdir=(.*)$/)
+                                {
+                                $fipslibdir="$1";
+                                }
+                        elsif (/^--with-baseaddr=(.*)$/)
+                                {
+                                $baseaddr="$1";
+                                }
+                        elsif (/^--cross-compile-prefix=(.*)$/)
+                                {
+                                $cross_compile_prefix=$1;
+                                }
+                        elsif (/^-[lL](.*)$/ or /^-Wl,/)
+                                {
+                                $libs.=$_." ";
+                                }
+                        else	# common if (/^[-+]/), just pass down...
+                                {
+                                $_ =~ s/%([0-9a-f]{1,2})/chr(hex($1))/gei;
+                                $flags.=$_." ";
+                                }
+                        }
+                elsif ($_ =~ /^([^:]+):(.+)$/)
+                        {
+                        eval "\$table{\$1} = \"$2\""; # allow $xxx constructs in the string
+                        $target=$1;
+                        }
+                else
+                        {
+                        die "target already defined - $target (offending arg: $_)\n" if ($target ne "");
+                        $target=$_;
+                        }
 
-		unless ($_ eq $target || /^no-/ || /^disable-/)
-			{
-			# "no-..." follows later after implied disactivations
-			# have been derived.  (Don't take this too seroiusly,
-			# we really only write OPTIONS to the Makefile out of
-			# nostalgia.)
+                unless ($_ eq $target || /^no-/ || /^disable-/)
+                        {
+                        # "no-..." follows later after implied disactivations
+                        # have been derived.  (Don't take this too seroiusly,
+                        # we really only write OPTIONS to the Makefile out of
+                        # nostalgia.)
 
-			if ($options eq "")
-				{ $options = $_; }
-			else
-				{ $options .= " ".$_; }
-			}
-		}
-	}
+                        if ($options eq "")
+                                { $options = $_; }
+                        else
+                                { $options .= " ".$_; }
+                        }
+                }
+        }
 
 
 
 if ($processor eq "386")
-	{
-	$disabled{"sse2"} = "forced";
-	}
+        {
+        $disabled{"sse2"} = "forced";
+        }
 
 if (!defined($withargs{"krb5-flavor"}) || $withargs{"krb5-flavor"} eq "")
-	{
-	$disabled{"krb5"} = "krb5-flavor not specified";
-	}
+        {
+        $disabled{"krb5"} = "krb5-flavor not specified";
+        }
 
 if (!defined($disabled{"zlib-dynamic"}))
-	{
-	# "zlib-dynamic" was specifically enabled, so enable "zlib"
-	delete $disabled{"zlib"};
-	}
+        {
+        # "zlib-dynamic" was specifically enabled, so enable "zlib"
+        delete $disabled{"zlib"};
+        }
 
 if (defined($disabled{"rijndael"}))
-	{
-	$disabled{"aes"} = "forced";
-	}
+        {
+        $disabled{"aes"} = "forced";
+        }
 if (defined($disabled{"des"}))
-	{
-	$disabled{"mdc2"} = "forced";
-	}
+        {
+        $disabled{"mdc2"} = "forced";
+        }
 if (defined($disabled{"ec"}))
-	{
-	$disabled{"ecdsa"} = "forced";
-	$disabled{"ecdh"} = "forced";
-	}
+        {
+        $disabled{"ecdsa"} = "forced";
+        $disabled{"ecdh"} = "forced";
+        }
 
 # SSL 2.0 requires MD5 and RSA
 if (defined($disabled{"md5"}) || defined($disabled{"rsa"}))
-	{
-	$disabled{"ssl2"} = "forced";
-	}
+        {
+        $disabled{"ssl2"} = "forced";
+        }
 
 if ($fips && $fipslibdir eq "")
-	{
-	$fipslibdir = $fipsdir . "/lib/";
-	}
+        {
+        $fipslibdir = $fipsdir . "/lib/";
+        }
 
 # RSAX ENGINE sets default non-FIPS RSA method.
 if ($fips)
-	{
-	$disabled{"rsax"} = "forced";
-	}
+        {
+        $disabled{"rsax"} = "forced";
+        }
 
 # SSL 3.0 and TLS requires MD5 and SHA and either RSA or DSA+DH
 if (defined($disabled{"md5"}) || defined($disabled{"sha"})
     || (defined($disabled{"rsa"})
         && (defined($disabled{"dsa"}) || defined($disabled{"dh"}))))
-	{
-	$disabled{"ssl3"} = "forced";
-	$disabled{"tls1"} = "forced";
-	}
+        {
+        $disabled{"ssl3"} = "forced";
+        $disabled{"tls1"} = "forced";
+        }
 
 if (defined($disabled{"tls1"}))
-	{
-	$disabled{"tlsext"} = "forced";
-	}
+        {
+        $disabled{"tlsext"} = "forced";
+        }
 
 if (defined($disabled{"ec"}) || defined($disabled{"dsa"})
     || defined($disabled{"dh"}))
-	{
-	$disabled{"gost"} = "forced";
-	}
+        {
+        $disabled{"gost"} = "forced";
+        }
 
 # SRP and HEARTBEATS require TLSEXT
 if (defined($disabled{"tlsext"}))
-	{
-	$disabled{"srp"} = "forced";
-	$disabled{"heartbeats"} = "forced";
-	}
+        {
+        $disabled{"srp"} = "forced";
+        $disabled{"heartbeats"} = "forced";
+        }
 
 if ($target eq "TABLE") {
-	foreach $target (sort keys %table) {
-		print_table_entry($target);
-	}
-	exit 0;
+        foreach $target (sort keys %table) {
+                print_table_entry($target);
+        }
+        exit 0;
 }
 
 if ($target eq "LIST") {
-	foreach (sort keys %table) {
-		print;
-		print "\n";
-	}
-	exit 0;
+        foreach (sort keys %table) {
+                print;
+                print "\n";
+        }
+        exit 0;
 }
 
 if ($target =~ m/^CygWin32(-.*)$/) {
-	$target = "Cygwin".$1;
+        $target = "Cygwin".$1;
 }
 
 print "Configuring for $target\n";
@@ -1125,72 +1127,72 @@ print "Configuring for $target\n";
 
 
 foreach (sort (keys %disabled))
-	{
-	$options .= " no-$_";
+        {
+        $options .= " no-$_";
 
-	printf "    no-%-12s %-10s", $_, "[$disabled{$_}]";
+        printf "    no-%-12s %-10s", $_, "[$disabled{$_}]";
 
-	if (/^dso$/)
-		{ $no_dso = 1; }
-	elsif (/^threads$/)
-		{ $no_threads = 1; }
-	elsif (/^shared$/)
-		{ $no_shared = 1; }
-	elsif (/^zlib$/)
-		{ $zlib = 0; }
-	elsif (/^static-engine$/)
-		{ }
-	elsif (/^zlib-dynamic$/)
-		{ }
-	elsif (/^symlinks$/)
-		{ $symlink = 0; }
-	elsif (/^sse2$/)
-		{ $no_sse2 = 1; }
-	else
-		{
-		my ($ALGO, $algo);
-		($ALGO = $algo = $_) =~ tr/[\-a-z]/[_A-Z]/;
+        if (/^dso$/)
+                { $no_dso = 1; }
+        elsif (/^threads$/)
+                { $no_threads = 1; }
+        elsif (/^shared$/)
+                { $no_shared = 1; }
+        elsif (/^zlib$/)
+                { $zlib = 0; }
+        elsif (/^static-engine$/)
+                { }
+        elsif (/^zlib-dynamic$/)
+                { }
+        elsif (/^symlinks$/)
+                { $symlink = 0; }
+        elsif (/^sse2$/)
+                { $no_sse2 = 1; }
+        else
+                {
+                my ($ALGO, $algo);
+                ($ALGO = $algo = $_) =~ tr/[\-a-z]/[_A-Z]/;
 
-		if (/^asm$/ || /^err$/ || /^hw$/ || /^hw-/)
-			{
-			$openssl_other_defines .= "#define OPENSSL_NO_$ALGO\n";
-			print " OPENSSL_NO_$ALGO";
-		
-			if (/^err$/)	{ $flags .= "-DOPENSSL_NO_ERR "; }
-			elsif (/^asm$/)	{ $no_asm = 1; }
-			}
-		else
-			{
-			$openssl_algorithm_defines .= "#define OPENSSL_NO_$ALGO\n";
-			print " OPENSSL_NO_$ALGO";
+                if (/^asm$/ || /^err$/ || /^hw$/ || /^hw-/)
+                        {
+                        $openssl_other_defines .= "#define OPENSSL_NO_$ALGO\n";
+                        print " OPENSSL_NO_$ALGO";
 
-			if (/^krb5$/)
-				{ $no_krb5 = 1; }
-			else
-				{
-				push @skip, $algo;
-				# fix-up crypto/directory name(s)
-				@skip[$#skip]="whrlpool" if $algo eq "whirlpool";
-				print " (skip dir)";
+                        if (/^err$/)	{ $flags .= "-DOPENSSL_NO_ERR "; }
+                        elsif (/^asm$/)	{ $no_asm = 1; }
+                        }
+                else
+                        {
+                        $openssl_algorithm_defines .= "#define OPENSSL_NO_$ALGO\n";
+                        print " OPENSSL_NO_$ALGO";
 
-				$depflags .= " -DOPENSSL_NO_$ALGO";
-				}
-			}
-		}
+                        if (/^krb5$/)
+                                { $no_krb5 = 1; }
+                        else
+                                {
+                                push @skip, $algo;
+                                # fix-up crypto/directory name(s)
+                                @skip[$#skip]="whrlpool" if $algo eq "whirlpool";
+                                print " (skip dir)";
 
-	print "\n";
-	}
+                                $depflags .= " -DOPENSSL_NO_$ALGO";
+                                }
+                        }
+                }
+
+        print "\n";
+        }
 
 my $exp_cflags = "";
 foreach (sort @experimental)
-	{
-	my $ALGO;
-	($ALGO = $_) =~ tr/[a-z]/[A-Z]/;
+        {
+        my $ALGO;
+        ($ALGO = $_) =~ tr/[a-z]/[A-Z]/;
 
-	# opensslconf.h will set OPENSSL_NO_... unless OPENSSL_EXPERIMENTAL_... is defined
-	$openssl_experimental_defines .= "#define OPENSSL_NO_$ALGO\n";
-	$exp_cflags .= " -DOPENSSL_EXPERIMENTAL_$ALGO";
-	}
+        # opensslconf.h will set OPENSSL_NO_... unless OPENSSL_EXPERIMENTAL_... is defined
+        $openssl_experimental_defines .= "#define OPENSSL_NO_$ALGO\n";
+        $exp_cflags .= " -DOPENSSL_EXPERIMENTAL_$ALGO";
+        }
 
 my $IsMK1MF=scalar grep /^$target$/,@MK1MF_Builds;
 
@@ -1254,6 +1256,7 @@ my $shared_extension = $fields[$idx_shared_extension];
 my $ranlib = $ENV{'RANLIB'} || $fields[$idx_ranlib];
 my $ar = $ENV{'AR'} || "ar";
 my $arflags = $fields[$idx_arflags];
+my $windres = $ENV{'RC'} || $ENV{'WINDRES'} || "windres";
 my $multilib = $fields[$idx_multilib];
 
 # if $prefix/lib$multilib is not an existing directory, then
@@ -1272,15 +1275,15 @@ if (defined($postlflags))	{ $lflags=$postlflags;	}
 else				{ $lflags=$prelflags; undef $prelflags;	}
 
 if ($target =~ /^mingw/ && `$cc --target-help 2>&1` !~ m/\-mno\-cygwin/m)
-	{
-	$cflags =~ s/\-mno\-cygwin\s*//;
-	$shared_ldflag =~ s/\-mno\-cygwin\s*//;
-	}
+        {
+        $cflags =~ s/\-mno\-cygwin\s*//;
+        $shared_ldflag =~ s/\-mno\-cygwin\s*//;
+        }
 
 if ($target =~ /linux.*\-mips/ && !$no_asm && $flags !~ /\-m(ips|arch=)/) {
-	# minimally required architecture flags for assembly modules
-	$cflags="-mips2 $cflags" if ($target =~ /mips32/);
-	$cflags="-mips3 $cflags" if ($target =~ /mips64/);
+        # minimally required architecture flags for assembly modules
+        $cflags="-mips2 $cflags" if ($target =~ /mips32/);
+        $cflags="-mips3 $cflags" if ($target =~ /mips64/);
 }
 
 my $no_shared_warn=0;
@@ -1292,58 +1295,58 @@ else			{ $no_user_cflags=1;       }
 # Kerberos settings.  The flavor must be provided from outside, either through
 # the script "config" or manually.
 if (!$no_krb5)
-	{
-	my ($lresolv, $lpath, $lext);
-	if ($withargs{"krb5-flavor"} =~ /^[Hh]eimdal$/)
-		{
-		die "Sorry, Heimdal is currently not supported\n";
-		}
-	##### HACK to force use of Heimdal.
-	##### WARNING: Since we don't really have adequate support for Heimdal,
-	#####          using this will break the build.  You'll have to make
-	#####          changes to the source, and if you do, please send
-	#####          patches to openssl-dev@openssl.org
-	if ($withargs{"krb5-flavor"} =~ /^force-[Hh]eimdal$/)
-		{
-		warn "Heimdal isn't really supported.  Your build WILL break\n";
-		warn "If you fix the problems, please send a patch to openssl-dev\@openssl.org\n";
-		$withargs{"krb5-dir"} = "/usr/heimdal"
-			if $withargs{"krb5-dir"} eq "";
-		$withargs{"krb5-lib"} = "-L".$withargs{"krb5-dir"}.
-			"/lib -lgssapi -lkrb5 -lcom_err"
-			if $withargs{"krb5-lib"} eq "" && !$IsMK1MF;
-		$cflags="-DKRB5_HEIMDAL $cflags";
-		}
-	if ($withargs{"krb5-flavor"} =~ /^[Mm][Ii][Tt]/)
-		{
-		$withargs{"krb5-dir"} = "/usr/kerberos"
-			if $withargs{"krb5-dir"} eq "";
-		$withargs{"krb5-lib"} = "-L".$withargs{"krb5-dir"}.
-			"/lib -lgssapi_krb5 -lkrb5 -lcom_err -lk5crypto"
-			if $withargs{"krb5-lib"} eq "" && !$IsMK1MF;
-		$cflags="-DKRB5_MIT $cflags";
-		$withargs{"krb5-flavor"} =~ s/^[Mm][Ii][Tt][._-]*//;
-		if ($withargs{"krb5-flavor"} =~ /^1[._-]*[01]/)
-			{
-			$cflags="-DKRB5_MIT_OLD11 $cflags";
-			}
-		}
-	LRESOLV:
-	foreach $lpath ("/lib", "/usr/lib")
-		{
-		foreach $lext ("a", "so")
-			{
-			$lresolv = "$lpath/libresolv.$lext";
-			last LRESOLV	if (-r "$lresolv");
-			$lresolv = "";
-			}
-		}
-	$withargs{"krb5-lib"} .= " -lresolv"
-		if ("$lresolv" ne "");
-	$withargs{"krb5-include"} = "-I".$withargs{"krb5-dir"}."/include"
-		if $withargs{"krb5-include"} eq "" &&
-		   $withargs{"krb5-dir"} ne "";
-	}
+        {
+        my ($lresolv, $lpath, $lext);
+        if ($withargs{"krb5-flavor"} =~ /^[Hh]eimdal$/)
+                {
+                die "Sorry, Heimdal is currently not supported\n";
+                }
+        ##### HACK to force use of Heimdal.
+        ##### WARNING: Since we don't really have adequate support for Heimdal,
+        #####          using this will break the build.  You'll have to make
+        #####          changes to the source, and if you do, please send
+        #####          patches to openssl-dev@openssl.org
+        if ($withargs{"krb5-flavor"} =~ /^force-[Hh]eimdal$/)
+                {
+                warn "Heimdal isn't really supported.  Your build WILL break\n";
+                warn "If you fix the problems, please send a patch to openssl-dev\@openssl.org\n";
+                $withargs{"krb5-dir"} = "/usr/heimdal"
+                        if $withargs{"krb5-dir"} eq "";
+                $withargs{"krb5-lib"} = "-L".$withargs{"krb5-dir"}.
+                        "/lib -lgssapi -lkrb5 -lcom_err"
+                        if $withargs{"krb5-lib"} eq "" && !$IsMK1MF;
+                $cflags="-DKRB5_HEIMDAL $cflags";
+                }
+        if ($withargs{"krb5-flavor"} =~ /^[Mm][Ii][Tt]/)
+                {
+                $withargs{"krb5-dir"} = "/usr/kerberos"
+                        if $withargs{"krb5-dir"} eq "";
+                $withargs{"krb5-lib"} = "-L".$withargs{"krb5-dir"}.
+                        "/lib -lgssapi_krb5 -lkrb5 -lcom_err -lk5crypto"
+                        if $withargs{"krb5-lib"} eq "" && !$IsMK1MF;
+                $cflags="-DKRB5_MIT $cflags";
+                $withargs{"krb5-flavor"} =~ s/^[Mm][Ii][Tt][._-]*//;
+                if ($withargs{"krb5-flavor"} =~ /^1[._-]*[01]/)
+                        {
+                        $cflags="-DKRB5_MIT_OLD11 $cflags";
+                        }
+                }
+        LRESOLV:
+        foreach $lpath ("/lib", "/usr/lib")
+                {
+                foreach $lext ("a", "so")
+                        {
+                        $lresolv = "$lpath/libresolv.$lext";
+                        last LRESOLV	if (-r "$lresolv");
+                        $lresolv = "";
+                        }
+                }
+        $withargs{"krb5-lib"} .= " -lresolv"
+                if ("$lresolv" ne "");
+        $withargs{"krb5-include"} = "-I".$withargs{"krb5-dir"}."/include"
+                if $withargs{"krb5-include"} eq "" &&
+                   $withargs{"krb5-dir"} ne "";
+        }
 
 # The DSO code currently always implements all functions so that no
 # applications will have to worry about that from a compilation point
@@ -1353,48 +1356,48 @@ if (!$no_krb5)
 # string entry into using the following logic;
 my $dso_cflags;
 if (!$no_dso && $dso_scheme ne "")
-	{
-	$dso_scheme =~ tr/[a-z]/[A-Z]/;
-	if ($dso_scheme eq "DLFCN")
-		{
-		$dso_cflags = "-DDSO_DLFCN -DHAVE_DLFCN_H";
-		}
-	elsif ($dso_scheme eq "DLFCN_NO_H")
-		{
-		$dso_cflags = "-DDSO_DLFCN";
-		}
-	else
-		{
-		$dso_cflags = "-DDSO_$dso_scheme";
-		}
-	$cflags = "$dso_cflags $cflags";
-	}
+        {
+        $dso_scheme =~ tr/[a-z]/[A-Z]/;
+        if ($dso_scheme eq "DLFCN")
+                {
+                $dso_cflags = "-DDSO_DLFCN -DHAVE_DLFCN_H";
+                }
+        elsif ($dso_scheme eq "DLFCN_NO_H")
+                {
+                $dso_cflags = "-DDSO_DLFCN";
+                }
+        else
+                {
+                $dso_cflags = "-DDSO_$dso_scheme";
+                }
+        $cflags = "$dso_cflags $cflags";
+        }
 
 my $thread_cflags;
 my $thread_defines;
 if ($thread_cflag ne "(unknown)" && !$no_threads)
-	{
-	# If we know how to do it, support threads by default.
-	$threads = 1;
-	}
+        {
+        # If we know how to do it, support threads by default.
+        $threads = 1;
+        }
 if ($thread_cflag eq "(unknown)" && $threads)
-	{
-	# If the user asked for "threads", [s]he is also expected to
-	# provide any system-dependent compiler options that are
-	# necessary.
-	if ($no_user_cflags)
-		{
-		print "You asked for multi-threading support, but didn't\n";
-		print "provide any system-specific compiler options\n";
-		exit(1);
-		}
-	$thread_cflags="-DOPENSSL_THREADS $cflags" ;
-	$thread_defines .= "#define OPENSSL_THREADS\n";
-	}
+        {
+        # If the user asked for "threads", [s]he is also expected to
+        # provide any system-dependent compiler options that are
+        # necessary.
+        if ($no_user_cflags)
+                {
+                print "You asked for multi-threading support, but didn't\n";
+                print "provide any system-specific compiler options\n";
+                exit(1);
+                }
+        $thread_cflags="-DOPENSSL_THREADS $cflags" ;
+        $thread_defines .= "#define OPENSSL_THREADS\n";
+        }
 else
-	{
-	$thread_cflags="-DOPENSSL_THREADS $thread_cflag $cflags";
-	$thread_defines .= "#define OPENSSL_THREADS\n";
+        {
+        $thread_cflags="-DOPENSSL_THREADS $thread_cflag $cflags";
+        $thread_defines .= "#define OPENSSL_THREADS\n";
 #	my $def;
 #	foreach $def (split ' ',$thread_cflag)
 #		{
@@ -1403,77 +1406,77 @@ else
 #			$thread_defines .= "#define $def\n";
 #			}
 #		}
-	}	
+        }
 
 $lflags="$libs$lflags" if ($libs ne "");
 
 if ($no_asm)
-	{
-	$cpuid_obj=$bn_obj=$ec_obj=
-	$des_obj=$aes_obj=$bf_obj=$cast_obj=$rc4_obj=$rc5_obj=$cmll_obj=
-	$modes_obj=$sha1_obj=$md5_obj=$rmd160_obj=$wp_obj=$engines_obj="";
-	}
+        {
+        $cpuid_obj=$bn_obj=$ec_obj=
+        $des_obj=$aes_obj=$bf_obj=$cast_obj=$rc4_obj=$rc5_obj=$cmll_obj=
+        $modes_obj=$sha1_obj=$md5_obj=$rmd160_obj=$wp_obj=$engines_obj="";
+        }
 
 if (!$no_shared)
-	{
-	$cast_obj="";	# CAST assembler is not PIC
-	}
+        {
+        $cast_obj="";	# CAST assembler is not PIC
+        }
 
 if ($threads)
-	{
-	$cflags=$thread_cflags;
-	$openssl_thread_defines .= $thread_defines;
-	}
+        {
+        $cflags=$thread_cflags;
+        $openssl_thread_defines .= $thread_defines;
+        }
 
 if ($zlib)
-	{
-	$cflags = "-DZLIB $cflags";
-	if (defined($disabled{"zlib-dynamic"}))
-		{
-		if (defined($withargs{"zlib-lib"}))
-			{
-			$lflags = "$lflags -L" . $withargs{"zlib-lib"} . " -lz";
-			}
-		else
-			{
-			$lflags = "$lflags -lz";
-			}
-		}
-	else
-		{
-		$cflags = "-DZLIB_SHARED $cflags";
-		}
-	}
+        {
+        $cflags = "-DZLIB $cflags";
+        if (defined($disabled{"zlib-dynamic"}))
+                {
+                if (defined($withargs{"zlib-lib"}))
+                        {
+                        $lflags = "$lflags -L" . $withargs{"zlib-lib"} . " -lz";
+                        }
+                else
+                        {
+                        $lflags = "$lflags -lz";
+                        }
+                }
+        else
+                {
+                $cflags = "-DZLIB_SHARED $cflags";
+                }
+        }
 
 # You will find shlib_mark1 and shlib_mark2 explained in Makefile.org
 my $shared_mark = "";
 if ($shared_target eq "")
-	{
-	$no_shared_warn = 1 if !$no_shared;
-	$no_shared = 1;
-	}
+        {
+        $no_shared_warn = 1 if !$no_shared;
+        $no_shared = 1;
+        }
 if (!$no_shared)
-	{
-	if ($shared_cflag ne "")
-		{
-		$cflags = "$shared_cflag -DOPENSSL_PIC $cflags";
-		}
-	}
+        {
+        if ($shared_cflag ne "")
+                {
+                $cflags = "$shared_cflag -DOPENSSL_PIC $cflags";
+                }
+        }
 
 if (!$IsMK1MF)
-	{
-	# add {no-}static-engine to options to allow mkdef.pl to work without extra arguments
-	if ($no_shared)
-		{
-		$openssl_other_defines.="#define OPENSSL_NO_DYNAMIC_ENGINE\n";
-		$options.=" static-engine";
-		}
-	else
-		{
-		$openssl_other_defines.="#define OPENSSL_NO_STATIC_ENGINE\n";
-		$options.=" no-static-engine";
-		}
-	}
+        {
+        # add {no-}static-engine to options to allow mkdef.pl to work without extra arguments
+        if ($no_shared)
+                {
+                $openssl_other_defines.="#define OPENSSL_NO_DYNAMIC_ENGINE\n";
+                $options.=" static-engine";
+                }
+        else
+                {
+                $openssl_other_defines.="#define OPENSSL_NO_STATIC_ENGINE\n";
+                $options.=" no-static-engine";
+                }
+        }
 
 $cpuid_obj.=" uplink.o uplink-x86.o" if ($cflags =~ /\-DOPENSSL_USE_APPLINK/);
 
@@ -1481,36 +1484,36 @@ $cpuid_obj.=" uplink.o uplink-x86.o" if ($cflags =~ /\-DOPENSSL_USE_APPLINK/);
 # Platform fix-ups
 #
 if ($target =~ /\-icc$/)	# Intel C compiler
-	{
-	my $iccver=0;
-	if (open(FD,"$cc -V 2>&1 |"))
-		{
-		while(<FD>) { $iccver=$1 if (/Version ([0-9]+)\./); }
-		close(FD);
-		}
-	if ($iccver>=8)
-		{
-		$cflags=~s/\-KPIC/-fPIC/;
-		# Eliminate unnecessary dependency from libirc.a. This is
-		# essential for shared library support, as otherwise
-		# apps/openssl can end up in endless loop upon startup...
-		$cflags.=" -Dmemcpy=__builtin_memcpy -Dmemset=__builtin_memset";
-		}
-	if ($iccver>=9)
-		{
-		$lflags.=" -i-static";
-		$lflags=~s/\-no_cpprt/-no-cpprt/;
-		}
-	if ($iccver>=10)
-		{
-		$lflags=~s/\-i\-static/-static-intel/;
-		}
-	if ($iccver>=11)
-		{
-		$cflags.=" -no-intel-extensions";	# disable Cilk
-		$lflags=~s/\-no\-cpprt/-no-cxxlib/;
-		}
-	}
+        {
+        my $iccver=0;
+        if (open(FD,"$cc -V 2>&1 |"))
+                {
+                while(<FD>) { $iccver=$1 if (/Version ([0-9]+)\./); }
+                close(FD);
+                }
+        if ($iccver>=8)
+                {
+                $cflags=~s/\-KPIC/-fPIC/;
+                # Eliminate unnecessary dependency from libirc.a. This is
+                # essential for shared library support, as otherwise
+                # apps/openssl can end up in endless loop upon startup...
+                $cflags.=" -Dmemcpy=__builtin_memcpy -Dmemset=__builtin_memset";
+                }
+        if ($iccver>=9)
+                {
+                $lflags.=" -i-static";
+                $lflags=~s/\-no_cpprt/-no-cpprt/;
+                }
+        if ($iccver>=10)
+                {
+                $lflags=~s/\-i\-static/-static-intel/;
+                }
+        if ($iccver>=11)
+                {
+                $cflags.=" -no-intel-extensions";	# disable Cilk
+                $lflags=~s/\-no\-cpprt/-no-cxxlib/;
+                }
+        }
 
 # Unlike other OSes (like Solaris, Linux, Tru64, IRIX) BSD run-time
 # linkers (tested OpenBSD, NetBSD and FreeBSD) "demand" RPATH set on
@@ -1521,20 +1524,20 @@ if ($target =~ /\-icc$/)	# Intel C compiler
 # lines above. Meanwhile let's try to be cautious and pass -rpath to
 # linker only when --prefix is not /usr.
 if ($target =~ /^BSD\-/)
-	{
-	$shared_ldflag.=" -Wl,-rpath,\$\$(LIBRPATH)" if ($prefix !~ m|^/usr[/]*$|);
-	}
+        {
+        $shared_ldflag.=" -Wl,-rpath,\$\$(LIBRPATH)" if ($prefix !~ m|^/usr[/]*$|);
+        }
 
 if ($sys_id ne "")
-	{
-	#$cflags="-DOPENSSL_SYSNAME_$sys_id $cflags";
-	$openssl_sys_defines="#define OPENSSL_SYSNAME_$sys_id\n";
-	}
+        {
+        #$cflags="-DOPENSSL_SYSNAME_$sys_id $cflags";
+        $openssl_sys_defines="#define OPENSSL_SYSNAME_$sys_id\n";
+        }
 
 if ($ranlib eq "")
-	{
-	$ranlib = $default_ranlib;
-	}
+        {
+        $ranlib = $default_ranlib;
+        }
 
 #my ($bn1)=split(/\s+/,$bn_obj);
 #$bn1 = "" unless defined $bn1;
@@ -1553,10 +1556,10 @@ $cflags.=" -DOPENSSL_BN_ASM_MONT5" if ($bn_obj =~ /-mont5/);
 $cflags.=" -DOPENSSL_BN_ASM_GF2m" if ($bn_obj =~ /-gf2m/);
 
 if ($fips)
-	{
-	$openssl_other_defines.="#define OPENSSL_FIPS\n";
-	$cflags .= " -I\$(FIPSDIR)/include";
-	}
+        {
+        $openssl_other_defines.="#define OPENSSL_FIPS\n";
+        $cflags .= " -I\$(FIPSDIR)/include";
+        }
 
 $cpuid_obj="mem_clr.o"	unless ($cpuid_obj =~ /\.o$/);
 $des_obj=$des_enc	unless ($des_obj =~ /\.o$/);
@@ -1565,60 +1568,60 @@ $cast_obj=$cast_enc	unless ($cast_obj =~ /\.o$/);
 $rc4_obj=$rc4_enc	unless ($rc4_obj =~ /\.o$/);
 $rc5_obj=$rc5_enc	unless ($rc5_obj =~ /\.o$/);
 if ($sha1_obj =~ /\.o$/)
-	{
+        {
 #	$sha1_obj=$sha1_enc;
-	$cflags.=" -DSHA1_ASM"   if ($sha1_obj =~ /sx86/ || $sha1_obj =~ /sha1/);
-	$cflags.=" -DSHA256_ASM" if ($sha1_obj =~ /sha256/);
-	$cflags.=" -DSHA512_ASM" if ($sha1_obj =~ /sha512/);
-	if ($sha1_obj =~ /sse2/)
-	    {	if ($no_sse2)
-		{   $sha1_obj =~ s/\S*sse2\S+//;        }
-		elsif ($cflags !~ /OPENSSL_IA32_SSE2/)
-		{   $cflags.=" -DOPENSSL_IA32_SSE2";    }
-	    }
-	}
+        $cflags.=" -DSHA1_ASM"   if ($sha1_obj =~ /sx86/ || $sha1_obj =~ /sha1/);
+        $cflags.=" -DSHA256_ASM" if ($sha1_obj =~ /sha256/);
+        $cflags.=" -DSHA512_ASM" if ($sha1_obj =~ /sha512/);
+        if ($sha1_obj =~ /sse2/)
+            {	if ($no_sse2)
+                {   $sha1_obj =~ s/\S*sse2\S+//;        }
+                elsif ($cflags !~ /OPENSSL_IA32_SSE2/)
+                {   $cflags.=" -DOPENSSL_IA32_SSE2";    }
+            }
+        }
 if ($md5_obj =~ /\.o$/)
-	{
+        {
 #	$md5_obj=$md5_enc;
-	$cflags.=" -DMD5_ASM";
-	}
+        $cflags.=" -DMD5_ASM";
+        }
 if ($rmd160_obj =~ /\.o$/)
-	{
+        {
 #	$rmd160_obj=$rmd160_enc;
-	$cflags.=" -DRMD160_ASM";
-	}
+        $cflags.=" -DRMD160_ASM";
+        }
 if ($aes_obj =~ /\.o$/)
-	{
-	$cflags.=" -DAES_ASM" if ($aes_obj =~ m/\baes\-/);;
-	# aes-ctr.o is not a real file, only indication that assembler
-	# module implements AES_ctr32_encrypt...
-	$cflags.=" -DAES_CTR_ASM" if ($aes_obj =~ s/\s*aes\-ctr\.o//);
-	# aes-xts.o indicates presense of AES_xts_[en|de]crypt...
-	$cflags.=" -DAES_XTS_ASM" if ($aes_obj =~ s/\s*aes\-xts\.o//);
-	$aes_obj =~ s/\s*(vpaes|aesni)\-x86\.o//g if ($no_sse2);
-	$cflags.=" -DVPAES_ASM" if ($aes_obj =~ m/vpaes/);
-	$cflags.=" -DBSAES_ASM" if ($aes_obj =~ m/bsaes/);
-	}
+        {
+        $cflags.=" -DAES_ASM" if ($aes_obj =~ m/\baes\-/);;
+        # aes-ctr.o is not a real file, only indication that assembler
+        # module implements AES_ctr32_encrypt...
+        $cflags.=" -DAES_CTR_ASM" if ($aes_obj =~ s/\s*aes\-ctr\.o//);
+        # aes-xts.o indicates presense of AES_xts_[en|de]crypt...
+        $cflags.=" -DAES_XTS_ASM" if ($aes_obj =~ s/\s*aes\-xts\.o//);
+        $aes_obj =~ s/\s*(vpaes|aesni)\-x86\.o//g if ($no_sse2);
+        $cflags.=" -DVPAES_ASM" if ($aes_obj =~ m/vpaes/);
+        $cflags.=" -DBSAES_ASM" if ($aes_obj =~ m/bsaes/);
+        }
 else	{
-	$aes_obj=$aes_enc;
-	}
+        $aes_obj=$aes_enc;
+        }
 $wp_obj="" if ($wp_obj =~ /mmx/ && $processor eq "386");
 if ($wp_obj =~ /\.o$/ && !$disabled{"whirlpool"})
-	{
-	$cflags.=" -DWHIRLPOOL_ASM";
-	}
+        {
+        $cflags.=" -DWHIRLPOOL_ASM";
+        }
 else	{
-	$wp_obj="wp_block.o";
-	}
+        $wp_obj="wp_block.o";
+        }
 $cmll_obj=$cmll_enc	unless ($cmll_obj =~ /.o$/);
 if ($modes_obj =~ /ghash\-/)
-	{
-	$cflags.=" -DGHASH_ASM";
-	}
+        {
+        $cflags.=" -DGHASH_ASM";
+        }
 if ($ec_obj =~ /ecp_nistz256/)
-	{
-	$cflags.=" -DECP_NISTZ256_ASM";
-	}
+        {
+        $cflags.=" -DECP_NISTZ256_ASM";
+        }
 
 # "Stringify" the C flags string.  This permits it to be made part of a string
 # and works as well on command lines.
@@ -1635,46 +1638,46 @@ my $shlib_minor = "unknown";
 
 open(IN,'<crypto/opensslv.h') || die "unable to read opensslv.h:$!\n";
 while (<IN>)
-	{
-	$version=$1 if /OPENSSL.VERSION.TEXT.*OpenSSL (\S+) /;
-	$version_num=$1 if /OPENSSL.VERSION.NUMBER.*0x(\S+)/;
-	$shlib_version_number=$1 if /SHLIB_VERSION_NUMBER *"([^"]+)"/;
-	$shlib_version_history=$1 if /SHLIB_VERSION_HISTORY *"([^"]*)"/;
-	}
+        {
+        $version=$1 if /OPENSSL.VERSION.TEXT.*OpenSSL (\S+) /;
+        $version_num=$1 if /OPENSSL.VERSION.NUMBER.*0x(\S+)/;
+        $shlib_version_number=$1 if /SHLIB_VERSION_NUMBER *"([^"]+)"/;
+        $shlib_version_history=$1 if /SHLIB_VERSION_HISTORY *"([^"]*)"/;
+        }
 close(IN);
 if ($shlib_version_history ne "") { $shlib_version_history .= ":"; }
 
 if ($version =~ /(^[0-9]*)\.([0-9\.]*)/)
-	{
-	$major=$1;
-	$minor=$2;
-	}
+        {
+        $major=$1;
+        $minor=$2;
+        }
 
 if ($shlib_version_number =~ /(^[0-9]*)\.([0-9\.]*)/)
-	{
-	$shlib_major=$1;
-	$shlib_minor=$2;
-	}
+        {
+        $shlib_major=$1;
+        $shlib_minor=$2;
+        }
 
 my $ecc = $cc;
 $ecc = "clang" if `$cc --version 2>&1` =~ /clang/;
 
 if ($strict_warnings)
-	{
-	my $wopt;
-	die "ERROR --strict-warnings requires gcc or clang" unless ($ecc =~ /gcc$/ or $ecc =~ /clang$/);
-	foreach $wopt (split /\s+/, $gcc_devteam_warn)
-		{
-		$cflags .= " $wopt" unless ($cflags =~ /(^|\s)$wopt(\s|$)/)
-		}
-	if ($ecc eq "clang")
-		{
-		foreach $wopt (split /\s+/, $clang_devteam_warn)
-			{
-			$cflags .= " $wopt" unless ($cflags =~ /(^|\s)$wopt(\s|$)/)
-			}
-		}
-	}
+        {
+        my $wopt;
+        die "ERROR --strict-warnings requires gcc or clang" unless ($ecc =~ /gcc$/ or $ecc =~ /clang$/);
+        foreach $wopt (split /\s+/, $gcc_devteam_warn)
+                {
+                $cflags .= " $wopt" unless ($cflags =~ /(^|\s)$wopt(\s|$)/)
+                }
+        if ($ecc eq "clang")
+                {
+                foreach $wopt (split /\s+/, $clang_devteam_warn)
+                        {
+                        $cflags .= " $wopt" unless ($cflags =~ /(^|\s)$wopt(\s|$)/)
+                        }
+                }
+        }
 
 open(IN,'<Makefile.org') || die "unable to read Makefile.org:$!\n";
 unlink("$Makefile.new") || die "unable to remove old $Makefile.new:$!\n" if -e "$Makefile.new";
@@ -1682,109 +1685,111 @@ open(OUT,">$Makefile.new") || die "unable to create $Makefile.new:$!\n";
 print OUT "### Generated automatically from Makefile.org by Configure.\n\n";
 my $sdirs=0;
 while (<IN>)
-	{
-	chomp;
-	$sdirs = 1 if /^SDIRS=/;
-	if ($sdirs) {
-		my $dir;
-		foreach $dir (@skip) {
-			s/(\s)$dir /$1/;
-			s/\s$dir$//;
-			}
-		}
-	$sdirs = 0 unless /\\$/;
+        {
+        chomp;
+        $sdirs = 1 if /^SDIRS=/;
+        if ($sdirs) {
+                my $dir;
+                foreach $dir (@skip) {
+                        s/(\s)$dir /$1/;
+                        s/\s$dir$//;
+                        }
+                }
+        $sdirs = 0 unless /\\$/;
         s/engines // if (/^DIRS=/ && $disabled{"engine"});
-	s/ccgost// if (/^ENGDIRS=/ && $disabled{"gost"});
-	s/^VERSION=.*/VERSION=$version/;
-	s/^MAJOR=.*/MAJOR=$major/;
-	s/^MINOR=.*/MINOR=$minor/;
-	s/^SHLIB_VERSION_NUMBER=.*/SHLIB_VERSION_NUMBER=$shlib_version_number/;
-	s/^SHLIB_VERSION_HISTORY=.*/SHLIB_VERSION_HISTORY=$shlib_version_history/;
-	s/^SHLIB_MAJOR=.*/SHLIB_MAJOR=$shlib_major/;
-	s/^SHLIB_MINOR=.*/SHLIB_MINOR=$shlib_minor/;
-	s/^SHLIB_EXT=.*/SHLIB_EXT=$shared_extension/;
-	s/^INSTALLTOP=.*$/INSTALLTOP=$prefix/;
-	s/^MULTILIB=.*$/MULTILIB=$multilib/;
-	s/^OPENSSLDIR=.*$/OPENSSLDIR=$openssldir/;
-	s/^LIBDIR=.*$/LIBDIR=$libdir/;
-	s/^INSTALL_PREFIX=.*$/INSTALL_PREFIX=$install_prefix/;
-	s/^PLATFORM=.*$/PLATFORM=$target/;
-	s/^OPTIONS=.*$/OPTIONS=$options/;
-	s/^CONFIGURE_ARGS=.*$/CONFIGURE_ARGS=$argvstring/;
-	if ($cross_compile_prefix)
-		{
-		s/^CC=.*$/CROSS_COMPILE= $cross_compile_prefix\nCC= \$\(CROSS_COMPILE\)$cc/;
-		s/^AR=\s*/AR= \$\(CROSS_COMPILE\)/;
-		s/^NM=\s*/NM= \$\(CROSS_COMPILE\)/;
-		s/^RANLIB=\s*/RANLIB= \$\(CROSS_COMPILE\)/;
-		s/^MAKEDEPPROG=.*$/MAKEDEPPROG= \$\(CROSS_COMPILE\)$cc/ if $cc eq "gcc";
-		}
-	else	{
-		s/^CC=.*$/CC= $cc/;
-		s/^AR=\s*ar/AR= $ar/;
-		s/^RANLIB=.*/RANLIB= $ranlib/;
-		s/^MAKEDEPPROG=.*$/MAKEDEPPROG= $cc/ if $cc eq "gcc";
-		s/^MAKEDEPPROG=.*$/MAKEDEPPROG= $cc/ if $ecc eq "gcc" || $ecc eq "clang";
-		}
-	s/^CFLAG=.*$/CFLAG= $cflags/;
-	s/^DEPFLAG=.*$/DEPFLAG=$depflags/;
-	s/^PEX_LIBS=.*$/PEX_LIBS= $prelflags/;
-	s/^EX_LIBS=.*$/EX_LIBS= $lflags/;
-	s/^EXE_EXT=.*$/EXE_EXT= $exe_ext/;
-	s/^CPUID_OBJ=.*$/CPUID_OBJ= $cpuid_obj/;
-	s/^BN_ASM=.*$/BN_ASM= $bn_obj/;
-	s/^EC_ASM=.*$/EC_ASM= $ec_obj/;
-	s/^DES_ENC=.*$/DES_ENC= $des_obj/;
-	s/^AES_ENC=.*$/AES_ENC= $aes_obj/;
-	s/^BF_ENC=.*$/BF_ENC= $bf_obj/;
-	s/^CAST_ENC=.*$/CAST_ENC= $cast_obj/;
-	s/^RC4_ENC=.*$/RC4_ENC= $rc4_obj/;
-	s/^RC5_ENC=.*$/RC5_ENC= $rc5_obj/;
-	s/^MD5_ASM_OBJ=.*$/MD5_ASM_OBJ= $md5_obj/;
-	s/^SHA1_ASM_OBJ=.*$/SHA1_ASM_OBJ= $sha1_obj/;
-	s/^RMD160_ASM_OBJ=.*$/RMD160_ASM_OBJ= $rmd160_obj/;
-	s/^WP_ASM_OBJ=.*$/WP_ASM_OBJ= $wp_obj/;
-	s/^CMLL_ENC=.*$/CMLL_ENC= $cmll_obj/;
-	s/^MODES_ASM_OBJ.=*$/MODES_ASM_OBJ= $modes_obj/;
-	s/^ENGINES_ASM_OBJ.=*$/ENGINES_ASM_OBJ= $engines_obj/;
-	s/^PERLASM_SCHEME=.*$/PERLASM_SCHEME= $perlasm_scheme/;
-	s/^PROCESSOR=.*/PROCESSOR= $processor/;
-	s/^ARFLAGS=.*/ARFLAGS= $arflags/;
-	s/^PERL=.*/PERL= $perl/;
-	s/^KRB5_INCLUDES=.*/KRB5_INCLUDES=$withargs{"krb5-include"}/;
-	s/^LIBKRB5=.*/LIBKRB5=$withargs{"krb5-lib"}/;
-	s/^LIBZLIB=.*/LIBZLIB=$withargs{"zlib-lib"}/;
-	s/^ZLIB_INCLUDE=.*/ZLIB_INCLUDE=$withargs{"zlib-include"}/;
+        s/ccgost// if (/^ENGDIRS=/ && $disabled{"gost"});
+        s/^VERSION=.*/VERSION=$version/;
+        s/^MAJOR=.*/MAJOR=$major/;
+        s/^MINOR=.*/MINOR=$minor/;
+        s/^SHLIB_VERSION_NUMBER=.*/SHLIB_VERSION_NUMBER=$shlib_version_number/;
+        s/^SHLIB_VERSION_HISTORY=.*/SHLIB_VERSION_HISTORY=$shlib_version_history/;
+        s/^SHLIB_MAJOR=.*/SHLIB_MAJOR=$shlib_major/;
+        s/^SHLIB_MINOR=.*/SHLIB_MINOR=$shlib_minor/;
+        s/^SHLIB_EXT=.*/SHLIB_EXT=$shared_extension/;
+        s/^INSTALLTOP=.*$/INSTALLTOP=$prefix/;
+        s/^MULTILIB=.*$/MULTILIB=$multilib/;
+        s/^OPENSSLDIR=.*$/OPENSSLDIR=$openssldir/;
+        s/^LIBDIR=.*$/LIBDIR=$libdir/;
+        s/^INSTALL_PREFIX=.*$/INSTALL_PREFIX=$install_prefix/;
+        s/^PLATFORM=.*$/PLATFORM=$target/;
+        s/^OPTIONS=.*$/OPTIONS=$options/;
+        s/^CONFIGURE_ARGS=.*$/CONFIGURE_ARGS=$argvstring/;
+        if ($cross_compile_prefix)
+                {
+                s/^CC=.*$/CROSS_COMPILE= $cross_compile_prefix\nCC= \$\(CROSS_COMPILE\)$cc/;
+                s/^AR=\s*/AR= \$\(CROSS_COMPILE\)/;
+                s/^NM=\s*/NM= \$\(CROSS_COMPILE\)/;
+                s/^RANLIB=\s*/RANLIB= \$\(CROSS_COMPILE\)/;
+                s/^RC=\s*/RC= \$\(CROSS_COMPILE\)/;
+                s/^MAKEDEPPROG=.*$/MAKEDEPPROG= \$\(CROSS_COMPILE\)$cc/ if $cc eq "gcc";
+                }
+        else	{
+                s/^CC=.*$/CC= $cc/;
+                s/^AR=\s*ar/AR= $ar/;
+                s/^RANLIB=.*/RANLIB= $ranlib/;
+                s/^RC=.*/RC= $windres/;
+                s/^MAKEDEPPROG=.*$/MAKEDEPPROG= $cc/ if $cc eq "gcc";
+                s/^MAKEDEPPROG=.*$/MAKEDEPPROG= $cc/ if $ecc eq "gcc" || $ecc eq "clang";
+                }
+        s/^CFLAG=.*$/CFLAG= $cflags/;
+        s/^DEPFLAG=.*$/DEPFLAG=$depflags/;
+        s/^PEX_LIBS=.*$/PEX_LIBS= $prelflags/;
+        s/^EX_LIBS=.*$/EX_LIBS= $lflags/;
+        s/^EXE_EXT=.*$/EXE_EXT= $exe_ext/;
+        s/^CPUID_OBJ=.*$/CPUID_OBJ= $cpuid_obj/;
+        s/^BN_ASM=.*$/BN_ASM= $bn_obj/;
+        s/^EC_ASM=.*$/EC_ASM= $ec_obj/;
+        s/^DES_ENC=.*$/DES_ENC= $des_obj/;
+        s/^AES_ENC=.*$/AES_ENC= $aes_obj/;
+        s/^BF_ENC=.*$/BF_ENC= $bf_obj/;
+        s/^CAST_ENC=.*$/CAST_ENC= $cast_obj/;
+        s/^RC4_ENC=.*$/RC4_ENC= $rc4_obj/;
+        s/^RC5_ENC=.*$/RC5_ENC= $rc5_obj/;
+        s/^MD5_ASM_OBJ=.*$/MD5_ASM_OBJ= $md5_obj/;
+        s/^SHA1_ASM_OBJ=.*$/SHA1_ASM_OBJ= $sha1_obj/;
+        s/^RMD160_ASM_OBJ=.*$/RMD160_ASM_OBJ= $rmd160_obj/;
+        s/^WP_ASM_OBJ=.*$/WP_ASM_OBJ= $wp_obj/;
+        s/^CMLL_ENC=.*$/CMLL_ENC= $cmll_obj/;
+        s/^MODES_ASM_OBJ.=*$/MODES_ASM_OBJ= $modes_obj/;
+        s/^ENGINES_ASM_OBJ.=*$/ENGINES_ASM_OBJ= $engines_obj/;
+        s/^PERLASM_SCHEME=.*$/PERLASM_SCHEME= $perlasm_scheme/;
+        s/^PROCESSOR=.*/PROCESSOR= $processor/;
+        s/^ARFLAGS=.*/ARFLAGS= $arflags/;
+        s/^PERL=.*/PERL= $perl/;
+        s/^KRB5_INCLUDES=.*/KRB5_INCLUDES=$withargs{"krb5-include"}/;
+        s/^LIBKRB5=.*/LIBKRB5=$withargs{"krb5-lib"}/;
+        s/^LIBZLIB=.*/LIBZLIB=$withargs{"zlib-lib"}/;
+        s/^ZLIB_INCLUDE=.*/ZLIB_INCLUDE=$withargs{"zlib-include"}/;
 
-	s/^FIPSDIR=.*/FIPSDIR=$fipsdir/;
-	s/^FIPSLIBDIR=.*/FIPSLIBDIR=$fipslibdir/;
-	s/^FIPSCANLIB=.*/FIPSCANLIB=libcrypto/ if $fips;
-	s/^BASEADDR=.*/BASEADDR=$baseaddr/;
+        s/^FIPSDIR=.*/FIPSDIR=$fipsdir/;
+        s/^FIPSLIBDIR=.*/FIPSLIBDIR=$fipslibdir/;
+        s/^FIPSCANLIB=.*/FIPSCANLIB=libcrypto/ if $fips;
+        s/^BASEADDR=.*/BASEADDR=$baseaddr/;
 
-	s/^SHLIB_TARGET=.*/SHLIB_TARGET=$shared_target/;
-	s/^SHLIB_MARK=.*/SHLIB_MARK=$shared_mark/;
-	s/^SHARED_LIBS=.*/SHARED_LIBS=\$(SHARED_CRYPTO) \$(SHARED_SSL)/ if (!$no_shared);
-	if ($shared_extension ne "" && $shared_extension =~ /^\.s([ol])\.[^\.]*$/)
-		{
-		my $sotmp = $1;
-		s/^SHARED_LIBS_LINK_EXTS=.*/SHARED_LIBS_LINK_EXTS=.s$sotmp/;
-		}
-	elsif ($shared_extension ne "" && $shared_extension =~ /^\.[^\.]*\.dylib$/)
-		{
-		s/^SHARED_LIBS_LINK_EXTS=.*/SHARED_LIBS_LINK_EXTS=.dylib/;
-		}
-	elsif ($shared_extension ne "" && $shared_extension =~ /^\.s([ol])\.[^\.]*\.[^\.]*$/)
-		{
-		my $sotmp = $1;
-		s/^SHARED_LIBS_LINK_EXTS=.*/SHARED_LIBS_LINK_EXTS=.s$sotmp.\$(SHLIB_MAJOR) .s$sotmp/;
-		}
-	elsif ($shared_extension ne "" && $shared_extension =~ /^\.[^\.]*\.[^\.]*\.dylib$/)
-		{
-		s/^SHARED_LIBS_LINK_EXTS=.*/SHARED_LIBS_LINK_EXTS=.\$(SHLIB_MAJOR).dylib .dylib/;
-		}
-	s/^SHARED_LDFLAGS=.*/SHARED_LDFLAGS=$shared_ldflag/;
-	print OUT $_."\n";
-	}
+        s/^SHLIB_TARGET=.*/SHLIB_TARGET=$shared_target/;
+        s/^SHLIB_MARK=.*/SHLIB_MARK=$shared_mark/;
+        s/^SHARED_LIBS=.*/SHARED_LIBS=\$(SHARED_CRYPTO) \$(SHARED_SSL)/ if (!$no_shared);
+        if ($shared_extension ne "" && $shared_extension =~ /^\.s([ol])\.[^\.]*$/)
+                {
+                my $sotmp = $1;
+                s/^SHARED_LIBS_LINK_EXTS=.*/SHARED_LIBS_LINK_EXTS=.s$sotmp/;
+                }
+        elsif ($shared_extension ne "" && $shared_extension =~ /^\.[^\.]*\.dylib$/)
+                {
+                s/^SHARED_LIBS_LINK_EXTS=.*/SHARED_LIBS_LINK_EXTS=.dylib/;
+                }
+        elsif ($shared_extension ne "" && $shared_extension =~ /^\.s([ol])\.[^\.]*\.[^\.]*$/)
+                {
+                my $sotmp = $1;
+                s/^SHARED_LIBS_LINK_EXTS=.*/SHARED_LIBS_LINK_EXTS=.s$sotmp.\$(SHLIB_MAJOR) .s$sotmp/;
+                }
+        elsif ($shared_extension ne "" && $shared_extension =~ /^\.[^\.]*\.[^\.]*\.dylib$/)
+                {
+                s/^SHARED_LIBS_LINK_EXTS=.*/SHARED_LIBS_LINK_EXTS=.\$(SHLIB_MAJOR).dylib .dylib/;
+                }
+        s/^SHARED_LDFLAGS=.*/SHARED_LDFLAGS=$shared_ldflag/;
+        print OUT $_."\n";
+        }
 close(IN);
 close(OUT);
 rename($Makefile,"$Makefile.bak") || die "unable to rename $Makefile\n" if -e $Makefile;
@@ -1813,7 +1818,7 @@ print "RANLIB        =$ranlib\n";
 print "ARFLAGS       =$arflags\n";
 print "PERL          =$perl\n";
 print "KRB5_INCLUDES =",$withargs{"krb5-include"},"\n"
-	if $withargs{"krb5-include"} ne "";
+        if $withargs{"krb5-include"} ne "";
 
 my $des_ptr=0;
 my $des_risc1=0;
@@ -1835,33 +1840,33 @@ my $export_var_as_fn=0;
 my $des_int;
 
 foreach (sort split(/\s+/,$bn_ops))
-	{
-	$des_ptr=1 if /DES_PTR/;
-	$des_risc1=1 if /DES_RISC1/;
-	$des_risc2=1 if /DES_RISC2/;
-	$des_unroll=1 if /DES_UNROLL/;
-	$des_int=1 if /DES_INT/;
-	$bn_ll=1 if /BN_LLONG/;
-	$rc4_int=0 if /RC4_CHAR/;
-	$rc4_int=3 if /RC4_LONG/;
-	$rc4_idx=1 if /RC4_INDEX/;
-	$rc4_chunk=1 if /RC4_CHUNK/;
-	$rc4_chunk=2 if /RC4_CHUNK_LL/;
-	$md2_int=0 if /MD2_CHAR/;
-	$md2_int=3 if /MD2_LONG/;
-	$idea_int=1 if /IDEA_SHORT/;
-	$idea_int=3 if /IDEA_LONG/;
-	$rc2_int=1 if /RC2_SHORT/;
-	$rc2_int=3 if /RC2_LONG/;
-	$bf_ptr=1 if $_ eq "BF_PTR";
-	$bf_ptr=2 if $_ eq "BF_PTR2";
-	($b64l,$b64,$b32,$b16,$b8)=(0,1,0,0,0) if /SIXTY_FOUR_BIT/;
-	($b64l,$b64,$b32,$b16,$b8)=(1,0,0,0,0) if /SIXTY_FOUR_BIT_LONG/;
-	($b64l,$b64,$b32,$b16,$b8)=(0,0,1,0,0) if /THIRTY_TWO_BIT/;
-	($b64l,$b64,$b32,$b16,$b8)=(0,0,0,1,0) if /SIXTEEN_BIT/;
-	($b64l,$b64,$b32,$b16,$b8)=(0,0,0,0,1) if /EIGHT_BIT/;
-	$export_var_as_fn=1 if /EXPORT_VAR_AS_FN/;
-	}
+        {
+        $des_ptr=1 if /DES_PTR/;
+        $des_risc1=1 if /DES_RISC1/;
+        $des_risc2=1 if /DES_RISC2/;
+        $des_unroll=1 if /DES_UNROLL/;
+        $des_int=1 if /DES_INT/;
+        $bn_ll=1 if /BN_LLONG/;
+        $rc4_int=0 if /RC4_CHAR/;
+        $rc4_int=3 if /RC4_LONG/;
+        $rc4_idx=1 if /RC4_INDEX/;
+        $rc4_chunk=1 if /RC4_CHUNK/;
+        $rc4_chunk=2 if /RC4_CHUNK_LL/;
+        $md2_int=0 if /MD2_CHAR/;
+        $md2_int=3 if /MD2_LONG/;
+        $idea_int=1 if /IDEA_SHORT/;
+        $idea_int=3 if /IDEA_LONG/;
+        $rc2_int=1 if /RC2_SHORT/;
+        $rc2_int=3 if /RC2_LONG/;
+        $bf_ptr=1 if $_ eq "BF_PTR";
+        $bf_ptr=2 if $_ eq "BF_PTR2";
+        ($b64l,$b64,$b32,$b16,$b8)=(0,1,0,0,0) if /SIXTY_FOUR_BIT/;
+        ($b64l,$b64,$b32,$b16,$b8)=(1,0,0,0,0) if /SIXTY_FOUR_BIT_LONG/;
+        ($b64l,$b64,$b32,$b16,$b8)=(0,0,1,0,0) if /THIRTY_TWO_BIT/;
+        ($b64l,$b64,$b32,$b16,$b8)=(0,0,0,1,0) if /SIXTEEN_BIT/;
+        ($b64l,$b64,$b32,$b16,$b8)=(0,0,0,0,1) if /EIGHT_BIT/;
+        $export_var_as_fn=1 if /EXPORT_VAR_AS_FN/;
+        }
 
 open(IN,'<crypto/opensslconf.h.in') || die "unable to read crypto/opensslconf.h.in:$!\n";
 unlink("crypto/opensslconf.h.new") || die "unable to remove old crypto/opensslconf.h.new:$!\n" if -e "crypto/opensslconf.h.new";
@@ -1901,80 +1906,80 @@ print OUT "#endif\n\n";
 print OUT "#define OPENSSL_CPUID_OBJ\n\n" if ($cpuid_obj ne "mem_clr.o");
 
 while (<IN>)
-	{
-	if	(/^#define\s+OPENSSLDIR/)
-		{
-		my $foo = $openssldir;
-		$foo =~ s/\\/\\\\/g;
-		print OUT "#define OPENSSLDIR \"$foo\"\n";
-		}
-	elsif	(/^#define\s+ENGINESDIR/)
-		{
-		my $foo = "$prefix/$libdir/engines";
-		$foo =~ s/\\/\\\\/g;
-		print OUT "#define ENGINESDIR \"$foo\"\n";
-		}
-	elsif	(/^#((define)|(undef))\s+OPENSSL_EXPORT_VAR_AS_FUNCTION/)
-		{ printf OUT "#undef OPENSSL_EXPORT_VAR_AS_FUNCTION\n"
-			if $export_var_as_fn;
-		  printf OUT "#%s OPENSSL_EXPORT_VAR_AS_FUNCTION\n",
-			($export_var_as_fn)?"define":"undef"; }
-	elsif	(/^#define\s+OPENSSL_UNISTD/)
-		{
-		$unistd = "<unistd.h>" if $unistd eq "";
-		print OUT "#define OPENSSL_UNISTD $unistd\n";
-		}
-	elsif	(/^#((define)|(undef))\s+SIXTY_FOUR_BIT_LONG/)
-		{ printf OUT "#%s SIXTY_FOUR_BIT_LONG\n",($b64l)?"define":"undef"; }
-	elsif	(/^#((define)|(undef))\s+SIXTY_FOUR_BIT/)
-		{ printf OUT "#%s SIXTY_FOUR_BIT\n",($b64)?"define":"undef"; }
-	elsif	(/^#((define)|(undef))\s+THIRTY_TWO_BIT/)
-		{ printf OUT "#%s THIRTY_TWO_BIT\n",($b32)?"define":"undef"; }
-	elsif	(/^#((define)|(undef))\s+SIXTEEN_BIT/)
-		{ printf OUT "#%s SIXTEEN_BIT\n",($b16)?"define":"undef"; }
-	elsif	(/^#((define)|(undef))\s+EIGHT_BIT/)
-		{ printf OUT "#%s EIGHT_BIT\n",($b8)?"define":"undef"; }
-	elsif	(/^#((define)|(undef))\s+BN_LLONG\s*$/)
-		{ printf OUT "#%s BN_LLONG\n",($bn_ll)?"define":"undef"; }
-	elsif	(/^\#define\s+DES_LONG\s+.*/)
-		{ printf OUT "#define DES_LONG unsigned %s\n",
-			($des_int)?'int':'long'; }
-	elsif	(/^\#(define|undef)\s+DES_PTR/)
-		{ printf OUT "#%s DES_PTR\n",($des_ptr)?'define':'undef'; }
-	elsif	(/^\#(define|undef)\s+DES_RISC1/)
-		{ printf OUT "#%s DES_RISC1\n",($des_risc1)?'define':'undef'; }
-	elsif	(/^\#(define|undef)\s+DES_RISC2/)
-		{ printf OUT "#%s DES_RISC2\n",($des_risc2)?'define':'undef'; }
-	elsif	(/^\#(define|undef)\s+DES_UNROLL/)
-		{ printf OUT "#%s DES_UNROLL\n",($des_unroll)?'define':'undef'; }
-	elsif	(/^#define\s+RC4_INT\s/)
-		{ printf OUT "#define RC4_INT unsigned %s\n",$type[$rc4_int]; }
-	elsif	(/^#undef\s+RC4_CHUNK/)
-		{
-		printf OUT "#undef RC4_CHUNK\n" if $rc4_chunk==0;
-		printf OUT "#define RC4_CHUNK unsigned long\n" if $rc4_chunk==1;
-		printf OUT "#define RC4_CHUNK unsigned long long\n" if $rc4_chunk==2;
-		}
-	elsif	(/^#((define)|(undef))\s+RC4_INDEX/)
-		{ printf OUT "#%s RC4_INDEX\n",($rc4_idx)?"define":"undef"; }
-	elsif (/^#(define|undef)\s+I386_ONLY/)
-		{ printf OUT "#%s I386_ONLY\n", ($processor eq "386")?
-			"define":"undef"; }
-	elsif	(/^#define\s+MD2_INT\s/)
-		{ printf OUT "#define MD2_INT unsigned %s\n",$type[$md2_int]; }
-	elsif	(/^#define\s+IDEA_INT\s/)
-		{printf OUT "#define IDEA_INT unsigned %s\n",$type[$idea_int];}
-	elsif	(/^#define\s+RC2_INT\s/)
-		{printf OUT "#define RC2_INT unsigned %s\n",$type[$rc2_int];}
-	elsif (/^#(define|undef)\s+BF_PTR/)
-		{
-		printf OUT "#undef BF_PTR\n" if $bf_ptr == 0;
-		printf OUT "#define BF_PTR\n" if $bf_ptr == 1;
-		printf OUT "#define BF_PTR2\n" if $bf_ptr == 2;
-	        }
-	else
-		{ print OUT $_; }
-	}
+        {
+        if	(/^#define\s+OPENSSLDIR/)
+                {
+                my $foo = $openssldir;
+                $foo =~ s/\\/\\\\/g;
+                print OUT "#define OPENSSLDIR \"$foo\"\n";
+                }
+        elsif	(/^#define\s+ENGINESDIR/)
+                {
+                my $foo = "$prefix/$libdir/engines";
+                $foo =~ s/\\/\\\\/g;
+                print OUT "#define ENGINESDIR \"$foo\"\n";
+                }
+        elsif	(/^#((define)|(undef))\s+OPENSSL_EXPORT_VAR_AS_FUNCTION/)
+                { printf OUT "#undef OPENSSL_EXPORT_VAR_AS_FUNCTION\n"
+                        if $export_var_as_fn;
+                  printf OUT "#%s OPENSSL_EXPORT_VAR_AS_FUNCTION\n",
+                        ($export_var_as_fn)?"define":"undef"; }
+        elsif	(/^#define\s+OPENSSL_UNISTD/)
+                {
+                $unistd = "<unistd.h>" if $unistd eq "";
+                print OUT "#define OPENSSL_UNISTD $unistd\n";
+                }
+        elsif	(/^#((define)|(undef))\s+SIXTY_FOUR_BIT_LONG/)
+                { printf OUT "#%s SIXTY_FOUR_BIT_LONG\n",($b64l)?"define":"undef"; }
+        elsif	(/^#((define)|(undef))\s+SIXTY_FOUR_BIT/)
+                { printf OUT "#%s SIXTY_FOUR_BIT\n",($b64)?"define":"undef"; }
+        elsif	(/^#((define)|(undef))\s+THIRTY_TWO_BIT/)
+                { printf OUT "#%s THIRTY_TWO_BIT\n",($b32)?"define":"undef"; }
+        elsif	(/^#((define)|(undef))\s+SIXTEEN_BIT/)
+                { printf OUT "#%s SIXTEEN_BIT\n",($b16)?"define":"undef"; }
+        elsif	(/^#((define)|(undef))\s+EIGHT_BIT/)
+                { printf OUT "#%s EIGHT_BIT\n",($b8)?"define":"undef"; }
+        elsif	(/^#((define)|(undef))\s+BN_LLONG\s*$/)
+                { printf OUT "#%s BN_LLONG\n",($bn_ll)?"define":"undef"; }
+        elsif	(/^\#define\s+DES_LONG\s+.*/)
+                { printf OUT "#define DES_LONG unsigned %s\n",
+                        ($des_int)?'int':'long'; }
+        elsif	(/^\#(define|undef)\s+DES_PTR/)
+                { printf OUT "#%s DES_PTR\n",($des_ptr)?'define':'undef'; }
+        elsif	(/^\#(define|undef)\s+DES_RISC1/)
+                { printf OUT "#%s DES_RISC1\n",($des_risc1)?'define':'undef'; }
+        elsif	(/^\#(define|undef)\s+DES_RISC2/)
+                { printf OUT "#%s DES_RISC2\n",($des_risc2)?'define':'undef'; }
+        elsif	(/^\#(define|undef)\s+DES_UNROLL/)
+                { printf OUT "#%s DES_UNROLL\n",($des_unroll)?'define':'undef'; }
+        elsif	(/^#define\s+RC4_INT\s/)
+                { printf OUT "#define RC4_INT unsigned %s\n",$type[$rc4_int]; }
+        elsif	(/^#undef\s+RC4_CHUNK/)
+                {
+                printf OUT "#undef RC4_CHUNK\n" if $rc4_chunk==0;
+                printf OUT "#define RC4_CHUNK unsigned long\n" if $rc4_chunk==1;
+                printf OUT "#define RC4_CHUNK unsigned long long\n" if $rc4_chunk==2;
+                }
+        elsif	(/^#((define)|(undef))\s+RC4_INDEX/)
+                { printf OUT "#%s RC4_INDEX\n",($rc4_idx)?"define":"undef"; }
+        elsif (/^#(define|undef)\s+I386_ONLY/)
+                { printf OUT "#%s I386_ONLY\n", ($processor eq "386")?
+                        "define":"undef"; }
+        elsif	(/^#define\s+MD2_INT\s/)
+                { printf OUT "#define MD2_INT unsigned %s\n",$type[$md2_int]; }
+        elsif	(/^#define\s+IDEA_INT\s/)
+                {printf OUT "#define IDEA_INT unsigned %s\n",$type[$idea_int];}
+        elsif	(/^#define\s+RC2_INT\s/)
+                {printf OUT "#define RC2_INT unsigned %s\n",$type[$rc2_int];}
+        elsif (/^#(define|undef)\s+BF_PTR/)
+                {
+                printf OUT "#undef BF_PTR\n" if $bf_ptr == 0;
+                printf OUT "#define BF_PTR\n" if $bf_ptr == 1;
+                printf OUT "#define BF_PTR2\n" if $bf_ptr == 2;
+                }
+        else
+                { print OUT $_; }
+        }
 close(IN);
 print OUT "#ifdef  __cplusplus\n";
 print OUT "}\n";
@@ -2005,12 +2010,12 @@ print "RC4_CHUNK is unsigned long long\n" if $rc4_chunk==2;
 print "MD2 uses u$type[$md2_int]\n" if $md2_int != $def_int;
 print "IDEA uses u$type[$idea_int]\n" if $idea_int != $def_int;
 print "RC2 uses u$type[$rc2_int]\n" if $rc2_int != $def_int;
-print "BF_PTR used\n" if $bf_ptr == 1; 
-print "BF_PTR2 used\n" if $bf_ptr == 2; 
+print "BF_PTR used\n" if $bf_ptr == 1;
+print "BF_PTR2 used\n" if $bf_ptr == 2;
 
 if($IsMK1MF) {
-	open (OUT,">crypto/buildinf.h") || die "Can't open buildinf.h";
-	printf OUT <<EOF;
+        open (OUT,">crypto/buildinf.h") || die "Can't open buildinf.h";
+        printf OUT <<EOF;
 #ifndef MK1MF_BUILD
   /* auto-generated by Configure for crypto/cversion.c:
    * for Unix builds, crypto/Makefile.ssl generates functional definitions;
@@ -2019,39 +2024,39 @@ if($IsMK1MF) {
   #error "Windows builds (PLATFORM=$target) use mk1mf.pl-created Makefiles"
 #endif
 EOF
-	close(OUT);
+        close(OUT);
 } else {
-	my $make_command = "$make PERL=\'$perl\'";
-	my $make_targets = "";
-	$make_targets .= " links" if $symlink;
-	$make_targets .= " depend" if $depflags ne $default_depflags && $make_depend;
-	$make_targets .= " gentests" if $symlink;
-	(system $make_command.$make_targets) == 0 or exit $?
-		if $make_targets ne "";
-	if ( $perl =~ m@^/@) {
-	    &dofile("tools/c_rehash",$perl,'^#!/', '#!%s','^my \$dir;$', 'my $dir = "' . $openssldir . '";', '^my \$prefix;$', 'my $prefix = "' . $prefix . '";');
-	    &dofile("apps/CA.pl",$perl,'^#!/', '#!%s');
-	} else {
-	    # No path for Perl known ...
-	    &dofile("tools/c_rehash",'/usr/local/bin/perl','^#!/', '#!%s','^my \$dir;$', 'my $dir = "' . $openssldir . '";',  '^my \$prefix;$', 'my $prefix = "' . $prefix . '";');
-	    &dofile("apps/CA.pl",'/usr/local/bin/perl','^#!/', '#!%s');
-	}
-	if ($depflags ne $default_depflags && !$make_depend) {
+        my $make_command = "$make PERL=\'$perl\'";
+        my $make_targets = "";
+        $make_targets .= " links" if $symlink;
+        $make_targets .= " depend" if $depflags ne $default_depflags && $make_depend;
+        $make_targets .= " gentests" if $symlink;
+        (system $make_command.$make_targets) == 0 or exit $?
+                if $make_targets ne "";
+        if ( $perl =~ m@^/@) {
+            &dofile("tools/c_rehash",$perl,'^#!/', '#!%s','^my \$dir;$', 'my $dir = "' . $openssldir . '";', '^my \$prefix;$', 'my $prefix = "' . $prefix . '";');
+            &dofile("apps/CA.pl",$perl,'^#!/', '#!%s');
+        } else {
+            # No path for Perl known ...
+            &dofile("tools/c_rehash",'/usr/local/bin/perl','^#!/', '#!%s','^my \$dir;$', 'my $dir = "' . $openssldir . '";',  '^my \$prefix;$', 'my $prefix = "' . $prefix . '";');
+            &dofile("apps/CA.pl",'/usr/local/bin/perl','^#!/', '#!%s');
+        }
+        if ($depflags ne $default_depflags && !$make_depend) {
             $warn_make_depend++;
         }
 }
 
 # create the ms/version32.rc file if needed
 if ($IsMK1MF && ($target !~ /^netware/)) {
-	my ($v1, $v2, $v3, $v4);
-	if ($version_num =~ /(^[0-9a-f]{1})([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})/i) {
-		$v1=hex $1;
-		$v2=hex $2;
-		$v3=hex $3;
-		$v4=hex $4;
-	}
-	open (OUT,">ms/version32.rc") || die "Can't open ms/version32.rc";
-	print OUT <<EOF;
+        my ($v1, $v2, $v3, $v4);
+        if ($version_num =~ /(^[0-9a-f]{1})([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})/i) {
+                $v1=hex $1;
+                $v2=hex $2;
+                $v3=hex $3;
+                $v4=hex $4;
+        }
+        open (OUT,">ms/version32.rc") || die "Can't open ms/version32.rc";
+        print OUT <<EOF;
 #include <winver.h>
 
 LANGUAGE 0x09,0x01
@@ -2071,28 +2076,28 @@ LANGUAGE 0x09,0x01
 BEGIN
     BLOCK "StringFileInfo"
     BEGIN
-	BLOCK "040904b0"
-	BEGIN
-	    // Required:	    
-	    VALUE "CompanyName", "The OpenSSL Project, http://www.openssl.org/\\0"
-	    VALUE "FileDescription", "OpenSSL Shared Library\\0"
-	    VALUE "FileVersion", "$version\\0"
+        BLOCK "040904b0"
+        BEGIN
+            // Required:
+            VALUE "CompanyName", "The OpenSSL Project, http://www.openssl.org/\\0"
+            VALUE "FileDescription", "OpenSSL Shared Library\\0"
+            VALUE "FileVersion", "$version\\0"
 #if defined(CRYPTO)
-	    VALUE "InternalName", "libeay32\\0"
-	    VALUE "OriginalFilename", "libeay32.dll\\0"
+            VALUE "InternalName", "libeay32\\0"
+            VALUE "OriginalFilename", "libeay32.dll\\0"
 #elif defined(SSL)
-	    VALUE "InternalName", "ssleay32\\0"
-	    VALUE "OriginalFilename", "ssleay32.dll\\0"
+            VALUE "InternalName", "ssleay32\\0"
+            VALUE "OriginalFilename", "ssleay32.dll\\0"
 #endif
-	    VALUE "ProductName", "The OpenSSL Toolkit\\0"
-	    VALUE "ProductVersion", "$version\\0"
-	    // Optional:
-	    //VALUE "Comments", "\\0"
-	    VALUE "LegalCopyright", "Copyright  © 1998-2005 The OpenSSL Project. Copyright © 1995-1998 Eric A. Young, Tim J. Hudson. All rights reserved.\\0"
-	    //VALUE "LegalTrademarks", "\\0"
-	    //VALUE "PrivateBuild", "\\0"
-	    //VALUE "SpecialBuild", "\\0"
-	END
+            VALUE "ProductName", "The OpenSSL Toolkit\\0"
+            VALUE "ProductVersion", "$version\\0"
+            // Optional:
+            //VALUE "Comments", "\\0"
+            VALUE "LegalCopyright", "Copyright  © 1998-2005 The OpenSSL Project. Copyright © 1995-1998 Eric A. Young, Tim J. Hudson. All rights reserved.\\0"
+            //VALUE "LegalTrademarks", "\\0"
+            //VALUE "PrivateBuild", "\\0"
+            //VALUE "SpecialBuild", "\\0"
+        END
     END
     BLOCK "VarFileInfo"
     BEGIN
@@ -2100,9 +2105,9 @@ BEGIN
     END
 END
 EOF
-	close(OUT);
+        close(OUT);
   }
-  
+
 print <<EOF;
 
 Configured for $target.
@@ -2128,90 +2133,90 @@ print <<EOF if ($warn_make_depend);
 *** Because of configuration changes, you MUST do the following before
 *** building:
 
-	make depend
+        make depend
 EOF
 
 exit(0);
 
 sub usage
-	{
-	print STDERR $usage;
-	print STDERR "\npick os/compiler from:\n";
-	my $j=0;
-	my $i;
+        {
+        print STDERR $usage;
+        print STDERR "\npick os/compiler from:\n";
+        my $j=0;
+        my $i;
         my $k=0;
-	foreach $i (sort keys %table)
-		{
-		next if $i =~ /^debug/;
-		$k += length($i) + 1;
-		if ($k > 78)
-			{
-			print STDERR "\n";
-			$k=length($i);
-			}
-		print STDERR $i . " ";
-		}
-	foreach $i (sort keys %table)
-		{
-		next if $i !~ /^debug/;
-		$k += length($i) + 1;
-		if ($k > 78)
-			{
-			print STDERR "\n";
-			$k=length($i);
-			}
-		print STDERR $i . " ";
-		}
-	print STDERR "\n\nNOTE: If in doubt, on Unix-ish systems use './config'.\n";
-	exit(1);
-	}
+        foreach $i (sort keys %table)
+                {
+                next if $i =~ /^debug/;
+                $k += length($i) + 1;
+                if ($k > 78)
+                        {
+                        print STDERR "\n";
+                        $k=length($i);
+                        }
+                print STDERR $i . " ";
+                }
+        foreach $i (sort keys %table)
+                {
+                next if $i !~ /^debug/;
+                $k += length($i) + 1;
+                if ($k > 78)
+                        {
+                        print STDERR "\n";
+                        $k=length($i);
+                        }
+                print STDERR $i . " ";
+                }
+        print STDERR "\n\nNOTE: If in doubt, on Unix-ish systems use './config'.\n";
+        exit(1);
+        }
 
 sub which
-	{
-	my($name)=@_;
-	my $path;
-	foreach $path (split /:/, $ENV{PATH})
-		{
-		if (-f "$path/$name$exe_ext" and -x _)
-			{
-			return "$path/$name$exe_ext" unless ($name eq "perl" and
-			 system("$path/$name$exe_ext -e " . '\'exit($]<5.0);\''));
-			}
-		}
-	}
+        {
+        my($name)=@_;
+        my $path;
+        foreach $path (split /:/, $ENV{PATH})
+                {
+                if (-f "$path/$name$exe_ext" and -x _)
+                        {
+                        return "$path/$name$exe_ext" unless ($name eq "perl" and
+                         system("$path/$name$exe_ext -e " . '\'exit($]<5.0);\''));
+                        }
+                }
+        }
 
 sub dofile
-	{
-	my $f; my $p; my %m; my @a; my $k; my $ff;
-	($f,$p,%m)=@_;
+        {
+        my $f; my $p; my %m; my @a; my $k; my $ff;
+        ($f,$p,%m)=@_;
 
-	open(IN,"<$f.in") || open(IN,"<$f") || die "unable to open $f:$!\n";
-	@a=<IN>;
-	close(IN);
-	foreach $k (keys %m)
-		{
-		grep(/$k/ && ($_=sprintf($m{$k}."\n",$p)),@a);
-		}
-	open(OUT,">$f.new") || die "unable to open $f.new:$!\n";
-	print OUT @a;
-	close(OUT);
-	rename($f,"$f.bak") || die "unable to rename $f\n" if -e $f;
-	rename("$f.new",$f) || die "unable to rename $f.new\n";
-	}
+        open(IN,"<$f.in") || open(IN,"<$f") || die "unable to open $f:$!\n";
+        @a=<IN>;
+        close(IN);
+        foreach $k (keys %m)
+                {
+                grep(/$k/ && ($_=sprintf($m{$k}."\n",$p)),@a);
+                }
+        open(OUT,">$f.new") || die "unable to open $f.new:$!\n";
+        print OUT @a;
+        close(OUT);
+        rename($f,"$f.bak") || die "unable to rename $f\n" if -e $f;
+        rename("$f.new",$f) || die "unable to rename $f.new\n";
+        }
 
 sub print_table_entry
-	{
-	my $target = shift;
+        {
+        my $target = shift;
 
-	my ($cc, $cflags, $unistd, $thread_cflag, $sys_id, $lflags,
-	    $bn_ops, $cpuid_obj, $bn_obj, $ec_obj, $des_obj, $aes_obj, $bf_obj,
-	    $md5_obj, $sha1_obj, $cast_obj, $rc4_obj, $rmd160_obj,
-	    $rc5_obj, $wp_obj, $cmll_obj, $modes_obj, $engines_obj,
-	    $perlasm_scheme, $dso_scheme, $shared_target, $shared_cflag,
-	    $shared_ldflag, $shared_extension, $ranlib, $arflags, $multilib)=
-	split(/\s*:\s*/,$table{$target} . ":" x 30 , -1);
-			
-	print <<EOF
+        my ($cc, $cflags, $unistd, $thread_cflag, $sys_id, $lflags,
+            $bn_ops, $cpuid_obj, $bn_obj, $ec_obj, $des_obj, $aes_obj, $bf_obj,
+            $md5_obj, $sha1_obj, $cast_obj, $rc4_obj, $rmd160_obj,
+            $rc5_obj, $wp_obj, $cmll_obj, $modes_obj, $engines_obj,
+            $perlasm_scheme, $dso_scheme, $shared_target, $shared_cflag,
+            $shared_ldflag, $shared_extension, $ranlib, $arflags, $multilib)=
+        split(/\s*:\s*/,$table{$target} . ":" x 30 , -1);
+
+        print <<EOF
 
 *** $target
 \$cc           = $cc
@@ -2247,40 +2252,40 @@ sub print_table_entry
 \$arflags      = $arflags
 \$multilib     = $multilib
 EOF
-	}
+        }
 
 sub test_sanity
-	{
-	my $errorcnt = 0;
+        {
+        my $errorcnt = 0;
 
-	print STDERR "=" x 70, "\n";
-	print STDERR "=== SANITY TESTING!\n";
-	print STDERR "=== No configuration will be done, all other arguments will be ignored!\n";
-	print STDERR "=" x 70, "\n";
+        print STDERR "=" x 70, "\n";
+        print STDERR "=== SANITY TESTING!\n";
+        print STDERR "=== No configuration will be done, all other arguments will be ignored!\n";
+        print STDERR "=" x 70, "\n";
 
-	foreach $target (sort keys %table)
-		{
-		@fields = split(/\s*:\s*/,$table{$target} . ":" x 30 , -1);
+        foreach $target (sort keys %table)
+                {
+                @fields = split(/\s*:\s*/,$table{$target} . ":" x 30 , -1);
 
-		if ($fields[$idx_dso_scheme-1] =~ /^(beos|dl|dlfcn|win32|vms)$/)
-			{
-			$errorcnt++;
-			print STDERR "SANITY ERROR: '$target' has the dso_scheme [$idx_dso_scheme] values\n";
-			print STDERR "              in the previous field\n";
-			}
-		elsif ($fields[$idx_dso_scheme+1] =~ /^(beos|dl|dlfcn|win32|vms)$/)
-			{
-			$errorcnt++;
-			print STDERR "SANITY ERROR: '$target' has the dso_scheme [$idx_dso_scheme] values\n";
-			print STDERR "              in the following field\n";
-			}
-		elsif ($fields[$idx_dso_scheme] !~ /^(beos|dl|dlfcn|win32|vms|)$/)
-			{
-			$errorcnt++;
-			print STDERR "SANITY ERROR: '$target' has the dso_scheme [$idx_dso_scheme] field = ",$fields[$idx_dso_scheme],"\n";
-			print STDERR "              valid values are 'beos', 'dl', 'dlfcn', 'win32' and 'vms'\n";
-			}
-		}
-	print STDERR "No sanity errors detected!\n" if $errorcnt == 0;
-	return $errorcnt;
-	}
+                if ($fields[$idx_dso_scheme-1] =~ /^(beos|dl|dlfcn|win32|vms)$/)
+                        {
+                        $errorcnt++;
+                        print STDERR "SANITY ERROR: '$target' has the dso_scheme [$idx_dso_scheme] values\n";
+                        print STDERR "              in the previous field\n";
+                        }
+                elsif ($fields[$idx_dso_scheme+1] =~ /^(beos|dl|dlfcn|win32|vms)$/)
+                        {
+                        $errorcnt++;
+                        print STDERR "SANITY ERROR: '$target' has the dso_scheme [$idx_dso_scheme] values\n";
+                        print STDERR "              in the following field\n";
+                        }
+                elsif ($fields[$idx_dso_scheme] !~ /^(beos|dl|dlfcn|win32|vms|)$/)
+                        {
+                        $errorcnt++;
+                        print STDERR "SANITY ERROR: '$target' has the dso_scheme [$idx_dso_scheme] field = ",$fields[$idx_dso_scheme],"\n";
+                        print STDERR "              valid values are 'beos', 'dl', 'dlfcn', 'win32' and 'vms'\n";
+                        }
+                }
+        print STDERR "No sanity errors detected!\n" if $errorcnt == 0;
+        return $errorcnt;
+        }
